@@ -1,0 +1,29 @@
+.DS_Store
+.claude/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# Local runs, caches, and API outputs.
+runs/
+data/cache/
+data/eval/
+
+# API keys — never commit.
+.env
+.env.local
+*.env.local
+.env.crossmodel.local
+*.local.json
+*.private.json
+
+# Local/private working material.
+private/
+local_private/
+docs/HANDOFF_*
