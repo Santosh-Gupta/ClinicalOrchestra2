@@ -1,0 +1,222 @@
+{
+  "case_id": "PMC13544609",
+  "source": {
+    "pmcid": "PMC13544609",
+    "doi": "10.7759/cureus.114019",
+    "title": "Ophelia Syndrome: Acute Stupor as a Primary Manifestation of Hodgkin Lymphoma Diagnosed by Fluorodeoxyglucose Positron Emission Tomography",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "license_code": "cc-by",
+    "publication_year": "2026",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13544609/"
+  },
+  "presentation": "A 59-year-old male was admitted for evaluation of lymphoproliferative syndrome under the care of the hematology service. Staging studies demonstrated adenomegalies at the cervical, thoracic, and abdominal levels, alongside pancreatic infiltration.",
+  "events": [
+    {
+      "index": 0,
+      "type": "progression",
+      "summary": "hospital-acquired pneumonia",
+      "detail": "The patient developed respiratory symptoms with impaired oxygenation and alveolar occupancy on chest radiograph.",
+      "source_span": "During the hospitalization, the patient developed respiratory symptoms with impaired oxygenation and alveolar occupancy on chest radiograph, consistent with hospital-acquired pneumonia",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 1,
+      "type": "response",
+      "summary": "resolution of pneumonia",
+      "detail": "The respiratory symptoms and pneumonia resolved with appropriate management.",
+      "source_span": "which resolved with appropriate management.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 2,
+      "type": "progression",
+      "summary": "polyserositis syndrome",
+      "detail": "The patient was identified to have ascites and pleural effusion.",
+      "source_span": "Concurrently, a polyserositis syndrome was identified, evidenced by ascites and a pleural effusion of mixed characteristics, considered related to the infectious process.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 3,
+      "type": "progression",
+      "summary": "deterioration of consciousness",
+      "detail": "The patient developed an unexplained deterioration of consciousness progressing to profound stupor.",
+      "source_span": "Four days after resolution of the infectious episode, the patient presented an unexplained deterioration of consciousness progressing to profound stupor without cranial nerve deficits or clinical seizure activity.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 4,
+      "type": "action",
+      "summary": "ICU transfer",
+      "detail": "The patient was transferred to the intensive care unit for strict neurological monitoring.",
+      "source_span": "He was transferred to the intensive care unit (ICU) for strict neurological monitoring.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 5,
+      "type": "action",
+      "summary": "brain MRI with contrast",
+      "detail": "An initial structural neuroimaging approach via brain MRI with contrast at 3 Tesla, including an epilepsy protocol, was performed.",
+      "source_span": "An initial structural neuroimaging approach via brain MRI with contrast at 3 Tesla, including an epilepsy protocol,",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 6,
+      "type": "result",
+      "summary": "brain MRI result",
+      "detail": "The MRI showed no signal alterations in the medial temporal lobes, no acute vascular events, and no leptomeningeal enhancement, with only mild cortical involutive changes.",
+      "source_span": "showed no signal alterations in the medial temporal lobes, no acute vascular events, and no leptomeningeal enhancement; only mild cortical involutive changes were noted.",
+      "yield_tier": 1,
+      "action_index": 5
+    },
+    {
+      "index": 7,
+      "type": "action",
+      "summary": "cerebrospinal fluid analysis",
+      "detail": "A cerebrospinal fluid analysis was performed to evaluate for infection or other etiologies.",
+      "source_span": "Cerebrospinal fluid analysis",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 8,
+      "type": "result",
+      "summary": "cerebrospinal fluid analysis result",
+      "detail": "The CSF analysis was unremarkable for infection, showing a clear appearance, zero cells, glucose of 49 mg/dL, and protein of 68 mg/dL.",
+      "source_span": "was unremarkable for infection, showing a clear appearance, zero cells per cubic millimeter, a glucose level of 49 mg/dL, and a protein level of 68 mg/dL.",
+      "yield_tier": 1,
+      "action_index": 7
+    },
+    {
+      "index": 9,
+      "type": "progression",
+      "summary": "acute kidney injury",
+      "detail": "The patient developed progressive acute kidney injury requiring alternate-day renal replacement therapy.",
+      "source_span": "Five days after ICU admission, the patient developed progressive acute kidney injury requiring alternate-day renal replacement therapy, without fulfilling urgent dialysis criteria.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 10,
+      "type": "action",
+      "summary": "levetiracetam trial",
+      "detail": "An empirical therapeutic trial with levetiracetam was initiated for suspected non-convulsive status epilepticus.",
+      "source_span": "An empirical therapeutic trial with levetiracetam for suspected non-convulsive status epilepticus",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 11,
+      "type": "response",
+      "summary": "response to levetiracetam",
+      "detail": "The levetiracetam trial yielded no clinical response.",
+      "source_span": "yielded no clinical response.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 12,
+      "type": "action",
+      "summary": "brain 18F-FDG PET/CT",
+      "detail": "An 18F-FDG PET/CT of the brain was performed.",
+      "source_span": "An 18F-FDG PET/CT of the brain was performed (Figure 1).",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 13,
+      "type": "result",
+      "summary": "brain 18F-FDG PET/CT result",
+      "detail": "The study showed marked bilateral hippocampal hypermetabolism and diffuse cortical hypometabolism with relative metabolic preservation of the primary motor and visual cortices (the 'tiara sign').",
+      "source_span": "The study revealed marked bilateral hippocampal hypermetabolism, serving as a marker of active synaptic neuroinflammation. Furthermore, diffuse cortical hypometabolism was observed with relative metabolic preservation of the primary motor and visual cortices (the \u201ctiara sign\u201d)",
+      "yield_tier": 2,
+      "action_index": 12
+    },
+    {
+      "index": 14,
+      "type": "action",
+      "summary": "lymph node and spleen biopsy",
+      "detail": "Histopathological examination of a lymph node and spleen biopsy was performed.",
+      "source_span": "histopathological examination of a lymph node and spleen biopsy",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 15,
+      "type": "result",
+      "summary": "lymph node and spleen biopsy result",
+      "detail": "The biopsy confirmed the diagnosis of mixed-cellularity classical Hodgkin lymphoma.",
+      "source_span": "confirmed the diagnosis of mixed-cellularity classical HL.",
+      "yield_tier": 2,
+      "action_index": 14
+    },
+    {
+      "index": 16,
+      "type": "diagnosis",
+      "summary": "Ophelia syndrome",
+      "detail": "The diagnosis of Ophelia syndrome, likely mediated by anti-mGluR5 antibodies, was established.",
+      "source_span": "The diagnosis of Ophelia syndrome was established, considered most likely mediated by anti-mGluR5 antibodies",
+      "yield_tier": 3,
+      "action_index": null
+    },
+    {
+      "index": 17,
+      "type": "action",
+      "summary": "contrast-enhanced abdominal CT",
+      "detail": "A contrast-enhanced abdominal CT was performed.",
+      "source_span": "A contrast-enhanced abdominal CT (Figure 2)",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 18,
+      "type": "result",
+      "summary": "contrast-enhanced abdominal CT result",
+      "detail": "The CT demonstrated a bulky retroperitoneal lymph node conglomerate encasing major abdominal vessels, alongside focal splenic and pancreatic infiltration.",
+      "source_span": "demonstrated a bulky retroperitoneal lymph node conglomerate encasing major abdominal vessels, alongside focal splenic and pancreatic infiltration",
+      "yield_tier": 1,
+      "action_index": 17
+    },
+    {
+      "index": 19,
+      "type": "action",
+      "summary": "methylprednisolone pulses",
+      "detail": "Rescue immunosuppression with methylprednisolone pulses (1 gram per day for three days) was initiated.",
+      "source_span": "rescue immunosuppression with methylprednisolone pulses (1 gram per day for three days) was initiated.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 20,
+      "type": "response",
+      "summary": "response to methylprednisolone",
+      "detail": "Within 72 hours, the patient dramatically recovered wakefulness and the ability to follow complex commands.",
+      "source_span": "Within 72 hours, the patient dramatically recovered wakefulness and the ability to follow complex commands.",
+      "yield_tier": 2,
+      "action_index": null
+    },
+    {
+      "index": 21,
+      "type": "action",
+      "summary": "ABVD chemotherapy",
+      "detail": "The patient started first-line ABVD (doxorubicin, bleomycin, vinblastine, and dacarbazine) chemotherapy.",
+      "source_span": "He subsequently started first-line ABVD (doxorubicin, bleomycin, vinblastine, and dacarbazine) chemotherapy",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 22,
+      "type": "response",
+      "summary": "response to ABVD chemotherapy",
+      "detail": "The patient achieved complete resolution of the neurological syndrome.",
+      "source_span": "achieving complete resolution of the neurological syndrome.",
+      "yield_tier": 2,
+      "action_index": null
+    }
+  ]
+}

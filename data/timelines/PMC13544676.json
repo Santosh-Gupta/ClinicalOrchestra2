@@ -1,0 +1,285 @@
+{
+  "case_id": "PMC13544676",
+  "source": {
+    "pmcid": "PMC13544676",
+    "doi": "10.1097/RC9.0000000000000873",
+    "title": "A Swiss flag through the chest: a case report of a rare transmediastinal impalement",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "license_code": "cc-by",
+    "publication_year": "2026",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13544676/"
+  },
+  "presentation": "A 61-year-old woman was airlifted to our major trauma center following a boating accident resulting in transthoracic impalement by a flagpole (air distance, 43 miles). She had a history of right-sided C7/T1 foraminotomy for foraminal stenosis with C8 radiculopathy and multilevel decompression and instrumented fusion (L1-S1) for degenerative lumbar spine disease. She had no regular medications, no known allergies, and a non-contributory social and family history. The patient slipped while transferring from one boat to another and was impaled by the flagpole.",
+  "events": [
+    {
+      "index": 0,
+      "type": "action",
+      "summary": "prehospital medical therapy",
+      "detail": "Administration of 1 g of intravenous tranexamic acid and continuous oxygen therapy.",
+      "source_span": "During the prehospital rescue, the patient received 1 g of intravenous tranexamic acid and continuous oxygen therapy.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 1,
+      "type": "action",
+      "summary": "primary survey and physical examination",
+      "detail": "Initial trauma assessment and physical examination upon arrival.",
+      "source_span": "The primary survey revealed no additional injuries (Fig. 1a).",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 2,
+      "type": "result",
+      "summary": "physical examination findings",
+      "detail": "A wheeze was noted over the left lung apex, with otherwise normal heart sounds and equal breath sounds bilaterally.",
+      "source_span": "On auscultation, a wheeze was noted over the left lung apex, with otherwise normal heart sounds and equal breath sounds bilaterally.",
+      "yield_tier": 1,
+      "action_index": 1
+    },
+    {
+      "index": 3,
+      "type": "action",
+      "summary": "chest X-ray",
+      "detail": "Initial chest X-ray to evaluate the foreign body.",
+      "source_span": "Chest X-ray showed an approximately 30-cm radiopaque foreign body penetrating the left hemithorax and extending to the right side (Fig. 1b).",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 4,
+      "type": "result",
+      "summary": "chest X-ray findings",
+      "detail": "Showed an approximately 30-cm radiopaque foreign body penetrating the left hemithorax and extending to the right side.",
+      "source_span": "Chest X-ray showed an approximately 30-cm radiopaque foreign body penetrating the left hemithorax and extending to the right side (Fig. 1b).",
+      "yield_tier": 1,
+      "action_index": 3
+    },
+    {
+      "index": 5,
+      "type": "action",
+      "summary": "routine laboratory tests and ROTEM",
+      "detail": "Routine laboratory investigations and viscoelastic hemostatic assay (ROTEM) on arrival.",
+      "source_span": "Routine laboratory investigations and viscoelastic hemostatic assay (ROTEM) on arrival were unremarkable; hemoglobin, at 116 g/L, was mildly below the reference range but did not prompt transfusion.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 6,
+      "type": "result",
+      "summary": "laboratory and ROTEM results",
+      "detail": "Unremarkable results with hemoglobin mildly below the reference range at 116 g/L.",
+      "source_span": "Routine laboratory investigations and viscoelastic hemostatic assay (ROTEM) on arrival were unremarkable; hemoglobin, at 116 g/L, was mildly below the reference range",
+      "yield_tier": 1,
+      "action_index": 5
+    },
+    {
+      "index": 7,
+      "type": "action",
+      "summary": "shortening of the flagpole",
+      "detail": "The remaining portion of the flagpole was shortened by the fire brigade using a cold saw to permit CT imaging.",
+      "source_span": "For the CT scan, the remaining portion of the flagpole was shortened by the fire brigade using a cold saw.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 8,
+      "type": "action",
+      "summary": "CT scan and CT angiogram",
+      "detail": "Computed tomography scan, including a CT angiogram (CTA), to define the injury path.",
+      "source_span": "Given the patient\u2019s stable condition, a computed tomography (CT) scan, including a CT angiogram (CTA), was performed.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 9,
+      "type": "result",
+      "summary": "CT scan and CTA findings",
+      "detail": "Confirmed the flagpole entered the left chest through the third ICS, pierced the left upper lobe, traversed the mediastinum near the aortic arch and left subclavian artery, passed between the trachea and esophagus, and ended in the right lung apex, with small bilateral pneumothoraces.",
+      "source_span": "CT imaging confirmed that the flagpole entered the left chest through the third ICS (Fig. 1c\u2013e), pierced the left upper lobe, and traversed the mediastinum, narrowly missing the aortic arch inferiorly and lying close to the left subclavian artery. It then passed between the trachea and esophagus before ending in the apex of the right lung",
+      "yield_tier": 2,
+      "action_index": 8
+    },
+    {
+      "index": 10,
+      "type": "action",
+      "summary": "bronchoscopy",
+      "detail": "Bronchoscopy performed via a laryngeal mask prior to tracheal intubation to visualize the tracheobronchial tree.",
+      "source_span": "bronchoscopy was performed via a laryngeal mask prior to tracheal intubation to permit unobstructed visualization of the tracheobronchial tree",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 11,
+      "type": "result",
+      "summary": "bronchoscopy findings",
+      "detail": "No endoluminal lesion was identified.",
+      "source_span": "no endoluminal lesion was identified in either structure",
+      "yield_tier": 1,
+      "action_index": 10
+    },
+    {
+      "index": 12,
+      "type": "action",
+      "summary": "esophagoscopy",
+      "detail": "Esophagoscopy performed before surgery to evaluate for esophageal injury.",
+      "source_span": "esophagoscopy was performed before surgery.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 13,
+      "type": "result",
+      "summary": "esophagoscopy findings",
+      "detail": "Extrinsic compression on the ventral wall of the esophagus approximately 2 cm cranial to the aortic arch and minor tracheal deviation, but no endoluminal lesion.",
+      "source_span": "Despite extrinsic compression on the ventral wall of the esophagus approximately 2 cm cranial to the aortic arch, and minor tracheal deviation, no endoluminal lesion was identified in either structure",
+      "yield_tier": 1,
+      "action_index": 12
+    },
+    {
+      "index": 14,
+      "type": "action",
+      "summary": "femoral vascular access",
+      "detail": "Insertion of femoral venous and arterial catheters to enable rapid cardiopulmonary bypass if required.",
+      "source_span": "femoral venous and arterial catheters were inserted to enable rapid cardiopulmonary bypass if required",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 15,
+      "type": "action",
+      "summary": "clamshell thoracotomy and foreign body removal",
+      "detail": "Clamshell incision in the fourth ICS, removal of the flagpole under direct vision, and exploration of mediastinal structures.",
+      "source_span": "A clamshell incision was made in the fourth ICS and extended to the flagpole entry point.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 16,
+      "type": "result",
+      "summary": "surgical findings and repairs",
+      "detail": "Confirmed flagpole penetrated both upper lobes and traversed the mediastinum above the aortic arch. Identified a minor adventitial injury to the aortic arch (managed conservatively), pulmonary lacerations (repaired with sutures), and a left upper lobe segmental artery injury (oversewn).",
+      "source_span": "As suspected from CT imaging, the flagpole had penetrated both upper lobes and traversed the mediastinum just above the aortic arch (Fig. 2b). The flagpole was carefully removed under direct vision. A minor adventitial injury to the aortic arch was identified",
+      "yield_tier": 3,
+      "action_index": 15
+    },
+    {
+      "index": 17,
+      "type": "progression",
+      "summary": "extubation",
+      "detail": "The patient was extubated 7 hours postoperatively.",
+      "source_span": "The patient was extubated after 7 hours and remained in the ICU for three days.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 18,
+      "type": "progression",
+      "summary": "neurological deficits",
+      "detail": "Development of tingling, neuropathic pain, and significant motor deficits affecting right-hand flexion and finger movement.",
+      "source_span": "Postoperatively, the patient developed tingling, neuropathic pain, and significant motor deficits affecting right-hand flexion and finger movement.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 19,
+      "type": "action",
+      "summary": "follow-up gastroscopy",
+      "detail": "Follow-up gastroscopy performed on postoperative day 1.",
+      "source_span": "Follow-up gastroscopy on POD 1",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 20,
+      "type": "result",
+      "summary": "follow-up gastroscopy findings",
+      "detail": "Confirmed no mucosal laceration.",
+      "source_span": "Follow-up gastroscopy on POD 1 and bronchoscopy on POD 2 confirmed no mucosal laceration.",
+      "yield_tier": 1,
+      "action_index": 19
+    },
+    {
+      "index": 21,
+      "type": "action",
+      "summary": "follow-up bronchoscopy",
+      "detail": "Follow-up bronchoscopy performed on postoperative day 2.",
+      "source_span": "bronchoscopy on POD 2",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 22,
+      "type": "result",
+      "summary": "follow-up bronchoscopy findings",
+      "detail": "Confirmed no mucosal laceration.",
+      "source_span": "Follow-up gastroscopy on POD 1 and bronchoscopy on POD 2 confirmed no mucosal laceration.",
+      "yield_tier": 1,
+      "action_index": 21
+    },
+    {
+      "index": 23,
+      "type": "action",
+      "summary": "brachial plexus MRI",
+      "detail": "MRI of the right brachial plexus on postoperative day 7.",
+      "source_span": "MRI right brachial plexus",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 24,
+      "type": "result",
+      "summary": "brachial plexus MRI findings",
+      "detail": "Demonstrated perineural edema/hematoma surrounding the right lateral and medial fascicles without evidence of nerve discontinuity.",
+      "source_span": "MRI demonstrated perineural edema/haematoma surrounding the right lateral and medial fascicles without evidence of nerve discontinuity.",
+      "yield_tier": 2,
+      "action_index": 23
+    },
+    {
+      "index": 25,
+      "type": "diagnosis",
+      "summary": "inferior brachial plexus irritation",
+      "detail": "Irritation of the right inferior brachial plexus (C8-T1) likely due to the contralateral trajectory of the flagpole.",
+      "source_span": "These symptoms were thought to result from irritation of the inferior brachial plexus (C8\u2013T1), likely due to the contralateral trajectory of the flagpole",
+      "yield_tier": 2,
+      "action_index": null
+    },
+    {
+      "index": 26,
+      "type": "progression",
+      "summary": "neurological improvement",
+      "detail": "Substantial improvement of neurological deficits by the time of discharge.",
+      "source_span": "By discharge, the neurological deficits had improved substantially.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 27,
+      "type": "progression",
+      "summary": "three-month recovery",
+      "detail": "Satisfactory clinical and radiological course with improved arm elevation, hand rotation, and largely normal tactile sensation.",
+      "source_span": "Follow-up at 3 months showed a satisfactory clinical and radiological course (Fig. 3). She could lift her right arm and rotate her hand, with largely normal tactile sensation.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 28,
+      "type": "action",
+      "summary": "electrophysiological examination",
+      "detail": "Electrophysiological examination performed at nearly 3 years of follow-up.",
+      "source_span": "electrophysiological examination",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 29,
+      "type": "result",
+      "summary": "electrophysiological findings",
+      "detail": "Demonstrated progressive reinnervation of median- and radial-innervated hand and arm muscles, with persistent plegia of ulnar-innervated hand muscles.",
+      "source_span": "electrophysiological examination demonstrated progressive reinnervation of median- and radial-innervated hand and arm muscles, with persistent plegia of ulnar-innervated hand muscles.",
+      "yield_tier": 1,
+      "action_index": 28
+    }
+  ]
+}

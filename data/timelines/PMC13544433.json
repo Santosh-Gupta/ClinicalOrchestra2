@@ -1,0 +1,186 @@
+{
+  "case_id": "PMC13544433",
+  "source": {
+    "pmcid": "PMC13544433",
+    "doi": "10.1093/jscr/rjag784",
+    "title": "Staged cranial resection of a left parietal high-grade glioma following intraoperative hemodynamic instability: a case report",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "license_code": "cc-by",
+    "publication_year": "2026",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13544433/"
+  },
+  "presentation": "A 54-year-old man with no relevant medical history presented in October 2023 with a two-month history of episodic vertigo and progressive retrograde amnesia. Neurological examination showed bradypsychia, acalculia, and agraphia consistent with an incomplete Gerstmann syndrome. Motor strength was 5/5 throughout (MRC scale) with no cranial nerve deficits or pyramidal signs",
+  "events": [
+    {
+      "index": 0,
+      "type": "action",
+      "summary": "gadolinium-enhanced brain MRI",
+      "detail": "Gadolinium-enhanced magnetic resonance imaging (MRI) of the brain.",
+      "source_span": "Gadolinium-enhanced magnetic resonance imaging (MRI) on 27 December 2023, revealed a heterogeneous left parietal intra-axial lesion",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 1,
+      "type": "result",
+      "summary": "brain MRI findings",
+      "detail": "Heterogeneous left parietal intra-axial lesion isointense on T1, with hypointense areas consistent with necrosis and cystic degeneration, poorly defined borders, extensive perilesional vasogenic edema, and a midline shift of 7.32 mm.",
+      "source_span": "revealed a heterogeneous left parietal intra-axial lesion isointense on T1, with hypointense areas consistent with necrosis and cystic degeneration, poorly defined borders, extensive perilesional vasogenic edema, and a midline shift of 7.32 mm",
+      "yield_tier": 2,
+      "action_index": 0
+    },
+    {
+      "index": 2,
+      "type": "action",
+      "summary": "proton MR spectroscopy",
+      "detail": "Proton MR spectroscopy analysis of the left parietal lesion.",
+      "source_span": "Proton MR spectroscopy analysis of the left parietal lesion showing significant peaks of N-acetylaspartate and choline, compatible with a high-grade tumor lesion.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 3,
+      "type": "result",
+      "summary": "proton MR spectroscopy findings",
+      "detail": "Significant peaks of N-acetylaspartate and choline, compatible with a high-grade tumor lesion.",
+      "source_span": "showing significant peaks of N-acetylaspartate and choline, compatible with a high-grade tumor lesion.",
+      "yield_tier": 2,
+      "action_index": 2
+    },
+    {
+      "index": 4,
+      "type": "action",
+      "summary": "left frontoparietal decompressive craniectomy and cytoreduction",
+      "detail": "Left frontoparietal decompressive craniectomy with intended cytoreduction.",
+      "source_span": "The patient underwent a left frontoparietal decompressive craniectomy with intended cytoreduction on 30 December 2023.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 5,
+      "type": "progression",
+      "summary": "intraoperative hypertensive crisis and venous hemorrhage",
+      "detail": "An acute hypertensive crisis during resection produced spontaneous venous hemorrhage unresponsive to bipolar cauterization and hemostatic packing, with progressive cerebral edema.",
+      "source_span": "An acute hypertensive crisis during resection produced spontaneous venous hemorrhage unresponsive to bipolar cauterization and hemostatic packing. Progressive cerebral edema persisted despite partial cytoreduction and fluid optimization.",
+      "yield_tier": 2,
+      "action_index": null
+    },
+    {
+      "index": 6,
+      "type": "action",
+      "summary": "aborted surgical resection",
+      "detail": "Resection was aborted with residual tumor left in situ due to sustained hemodynamic compromise and risk of neurovascular injury.",
+      "source_span": "Given the sustained hemodynamic compromise and the risk of further neurovascular injury, the resection was aborted with residual tumor left in situ.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 7,
+      "type": "action",
+      "summary": "postoperative head CT",
+      "detail": "Postoperative computed tomography to assess for complications.",
+      "source_span": "Postoperative computed tomography showed no infarction, postsurgical hematoma, or herniation",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 8,
+      "type": "result",
+      "summary": "postoperative head CT findings",
+      "detail": "No infarction, postsurgical hematoma, or herniation.",
+      "source_span": "showed no infarction, postsurgical hematoma, or herniation",
+      "yield_tier": 1,
+      "action_index": 7
+    },
+    {
+      "index": 9,
+      "type": "action",
+      "summary": "histopathological analysis",
+      "detail": "Histopathological analysis of the resected tumor tissue.",
+      "source_span": "Histopathology confirmed high-grade glioma",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 10,
+      "type": "result",
+      "summary": "histopathology findings",
+      "detail": "Intravascular endothelial hyperplasia compatible with diffuse glioma of adult type, histologically grade 4.",
+      "source_span": "intravascular endothelial hyperplasia compatible with diffuse glioma of adult type, histologically grade 4.",
+      "yield_tier": 3,
+      "action_index": 9
+    },
+    {
+      "index": 11,
+      "type": "diagnosis",
+      "summary": "high-grade glioma diagnosis",
+      "detail": "High-grade glioma (diffuse glioma of adult type, histologically grade 4).",
+      "source_span": "Histopathology confirmed high-grade glioma",
+      "yield_tier": 3,
+      "action_index": null
+    },
+    {
+      "index": 12,
+      "type": "response",
+      "summary": "postoperative recovery",
+      "detail": "Brief mechanical ventilation, extubated without incident, and discharged with GCS 15. Bradypsychia improved, but acalculia and agraphia persisted.",
+      "source_span": "The patient required brief mechanical ventilation, was extubated without incident, and was discharged with GCS 15. Bradypsychia had improved. Acalculia and agraphia persisted.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 13,
+      "type": "progression",
+      "summary": "progressive swelling and nausea",
+      "detail": "Readmitted approximately 85 days later with progressive increased volume at the craniectomy site and nausea.",
+      "source_span": "Approximately 85 days later, the patient was readmitted with progressive increased volume at the craniectomy site and nausea.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 14,
+      "type": "action",
+      "summary": "repeat neuroimaging",
+      "detail": "Repeat neuroimaging to evaluate the residual tumor and craniectomy site.",
+      "source_span": "Repeat neuroimaging showed residual tumor without interval growth, ischemia, or new hemorrhage.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 15,
+      "type": "result",
+      "summary": "repeat neuroimaging findings",
+      "detail": "Residual tumor without interval growth, ischemia, or new hemorrhage.",
+      "source_span": "showed residual tumor without interval growth, ischemia, or new hemorrhage.",
+      "yield_tier": 1,
+      "action_index": 14
+    },
+    {
+      "index": 16,
+      "type": "action",
+      "summary": "left parietal lobectomy",
+      "detail": "Left parietal lobectomy performed through the prior craniectomy using neuronavigation and sodium fluorescein-enhanced visualization.",
+      "source_span": "On 25 March 2024, a left parietal lobectomy was performed through the prior craniectomy. Neuronavigation and sodium fluorescein-enhanced visualization were used to delineate tumor margins within the altered operative field.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 17,
+      "type": "result",
+      "summary": "surgical outcome of stage 2",
+      "detail": "Gross total resection was achieved without intraoperative incidents.",
+      "source_span": "Gross total resection was achieved without intraoperative incidents.",
+      "yield_tier": 1,
+      "action_index": 16
+    },
+    {
+      "index": 18,
+      "type": "response",
+      "summary": "postoperative recovery",
+      "detail": "Discharged on postoperative Day 2 at GCS 15. Agraphia improved, mild acalculia remained, with no surgical, infectious, or thromboembolic complications.",
+      "source_span": "The patient was discharged on postoperative Day 2 at GCS 15. Agraphia had improved and mild acalculia remained. No surgical, infectious, or thromboembolic complications occurred.",
+      "yield_tier": 1,
+      "action_index": null
+    }
+  ]
+}

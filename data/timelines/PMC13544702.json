@@ -1,0 +1,123 @@
+{
+  "case_id": "PMC13544702",
+  "source": {
+    "pmcid": "PMC13544702",
+    "doi": "10.1097/RC9.0000000000000871",
+    "title": "Long-term functional outcome after conservative management of a fingertip amputation with exposed bone, using a semi-occlusive dressing: a case report",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "license_code": "cc-by",
+    "publication_year": "2026",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13544702/"
+  },
+  "presentation": "On 23 April 2020, a 47-year-old man with no relevant medical history presented to a primary care center after cutting vegetables with a mandoline slicer. He was right-hand dominant and worked as a university professor. Examination showed partial amputation of the right little-finger pulp, approximately 10 \u00d7 15 mm, with an exposed distal phalanx and no nail-bed involvement (Fig. 1A).",
+  "events": [
+    {
+      "index": 0,
+      "type": "diagnosis",
+      "summary": "clinical diagnosis of fingertip amputation",
+      "detail": "Right little-fingertip amputation with exposed distal phalanx, clinically consistent with an Allen type II injury.",
+      "source_span": "The diagnosis was a right little-fingertip amputation with exposed distal phalanx, clinically consistent with an Allen type II injury.",
+      "yield_tier": 3,
+      "action_index": null
+    },
+    {
+      "index": 1,
+      "type": "action",
+      "summary": "bleeding control",
+      "detail": "Bleeding was controlled using direct pressure and limb elevation.",
+      "source_span": "Bleeding was controlled with direct pressure and limb elevation.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 2,
+      "type": "action",
+      "summary": "wound cleansing and debridement",
+      "detail": "The wound was cleansed with sterile saline and superficial non-viable tissue was removed without bone shortening.",
+      "source_span": "The wound was cleansed with sterile saline; no bone shortening was performed and only superficial non-viable tissue was removed.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 3,
+      "type": "action",
+      "summary": "semi-occlusive dressing application",
+      "detail": "A transparent semi-occlusive polyurethane dressing (Tegaderm) was applied to the wound.",
+      "source_span": "A transparent semi-occlusive polyurethane dressing (Tegaderm) was applied (Fig. 1B).",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 4,
+      "type": "action",
+      "summary": "pain management",
+      "detail": "Initial pain was managed with non-steroidal anti-inflammatory drugs and paracetamol.",
+      "source_span": "Initial pain was controlled with non-steroidal anti-inflammatory drugs and paracetamol.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 5,
+      "type": "progression",
+      "summary": "one-week follow-up",
+      "detail": "Presence of malodorous serous fluid beneath the dressing and early granulation, without signs of infection.",
+      "source_span": "At 1 week, malodorous serous fluid was present beneath the dressing, with early granulation but no increasing pain, fever, spreading erythema, or purulent discharge (Fig. 1C).",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 6,
+      "type": "progression",
+      "summary": "two-week follow-up",
+      "detail": "Abundant granulation tissue was observed.",
+      "source_span": "Granulation tissue was abundant after 2 weeks (Fig. 1D);",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 7,
+      "type": "progression",
+      "summary": "three-to-four-week follow-up",
+      "detail": "Clinical coverage of the previously exposed bone was achieved.",
+      "source_span": "the exposed bone was clinically covered by weeks 3 to 4 (Fig. 1E and F);",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 8,
+      "type": "progression",
+      "summary": "five-to-six-week follow-up",
+      "detail": "Near-complete pulp reconstruction of the fingertip.",
+      "source_span": "near-complete pulp reconstruction was present by weeks 5 to 6 (Fig. 1G and H).",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 9,
+      "type": "progression",
+      "summary": "three-month follow-up",
+      "detail": "Preserved function, high esthetic satisfaction, and mild residual sensory alteration.",
+      "source_span": "At three months, the patient reported preserved function, high esthetic satisfaction, and mild residual sensory alteration.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 10,
+      "type": "action",
+      "summary": "six-year follow-up clinic assessment",
+      "detail": "An in-person clinic assessment was scheduled approximately 6 years after the injury.",
+      "source_span": "Approximately 6 years after injury, the patient was contacted by telephone and scheduled for an in-person clinic assessment.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 11,
+      "type": "result",
+      "summary": "six-year follow-up results",
+      "detail": "QuickDASH score of 2.3/100, with mild residual sensory reduction requiring keyboard typing adaptation.",
+      "source_span": "The QuickDASH score was 2.3/100[9]. The only functional adaptation was avoiding use of the injured right little finger during keyboard typing because of mild residual sensory reduction.",
+      "yield_tier": 1,
+      "action_index": 10
+    }
+  ]
+}

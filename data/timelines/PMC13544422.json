@@ -1,0 +1,240 @@
+{
+  "case_id": "PMC13544422",
+  "source": {
+    "pmcid": "PMC13544422",
+    "doi": "10.1155/crdi/6147749",
+    "title": "Fulminant Brucella melitensis Infection Presenting With Severe Cholestatic Hepatitis, Acute Kidney Injury, and Disseminated Intravascular Coagulation: A Case Report",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "license_code": "cc-by",
+    "publication_year": "2026",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13544422/"
+  },
+  "presentation": "A 54\u2010year\u2010old male engaged in livestock farming, with no history of chronic illness or medication use, presented to the emergency department with a 4\u2010day history of right upper quadrant tenderness, progressive jaundice, and generalized pruritus. He kept his own herd of goats and regularly consumed unpasteurized milk from these animals. His occupation entailed daily close contact with the herd within a confined barn, and contact with abortion material was considered probable, although he had not attended any parturition. There was no accompanying fever, chills, or other systemic symptoms. There was no family history of hepatic, renal, or hematologic disease, and no known relevant genetic predisposition. He reported no recent travel, no alcohol or illicit drug use, and no use of hepatotoxic, over\u2010the\u2010counter, or herbal products. On examination, prominent scleral icterus was observed. The patient was mildly lethargic, with a Glasgow Coma Scale score of 14. Vital signs were as follows: temperature 37.8\u00b0C, blood pressure 115/70 mmHg, heart rate 92 beats/min, and respiratory rate 18 breaths/min. Abdominal examination revealed localized right upper quadrant tenderness without guarding, rebound tenderness, or Murphy\u2019s sign. Cardiac auscultation disclosed a prominent pansystolic murmur at the mitral focus, and locomotor examination identified lumbar tenderness. The respiratory examination was unremarkable.",
+  "events": [
+    {
+      "index": 0,
+      "type": "action",
+      "summary": "admission laboratory tests",
+      "detail": "Complete blood count, liver function tests, renal function tests, coagulation profile, and other admission labs",
+      "source_span": "Laboratory findings on admission are summarized in Table 1.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 1,
+      "type": "result",
+      "summary": "admission laboratory results",
+      "detail": "Marked cholestatic pattern (ALP 565 U/L, GGT 225 U/L, total bilirubin 25.1 mg/dL, direct bilirubin 23 mg/dL), severe renal failure (creatinine 11.52 mg/dL, urea 373 mg/dL), thrombocytopenia (platelets 55 x 10^9/L), and deranged coagulation (INR 1.45, fibrinogen 77 mg/dL, D-dimer 11.79 mg/L FEU)",
+      "source_span": "The liver\u2010enzyme profile showed a cholestatic pattern, with a marked elevation of alkaline phosphatase (ALP; 565 U/L) and gamma\u2010glutamyl transferase (GGT; 225 U/L) and only mild transaminase elevation.",
+      "yield_tier": 2,
+      "action_index": 0
+    },
+    {
+      "index": 2,
+      "type": "action",
+      "summary": "peripheral blood smear",
+      "detail": "Evaluation of peripheral blood smear for schistocytes and platelet aggregates",
+      "source_span": "The peripheral blood smear demonstrated 1%\u20132% schistocytes, and the clinical pathologist specifically reported the absence of platelet aggregates",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 3,
+      "type": "result",
+      "summary": "peripheral blood smear results",
+      "detail": "1%-2% schistocytes and absence of platelet aggregates, confirming true thrombocytopenia",
+      "source_span": "The peripheral blood smear demonstrated 1%\u20132% schistocytes, and the clinical pathologist specifically reported the absence of platelet aggregates, thereby excluding pseudothrombocytopenia due to platelet clumping and confirming true thrombocytopenia.",
+      "yield_tier": 2,
+      "action_index": 2
+    },
+    {
+      "index": 4,
+      "type": "diagnosis",
+      "summary": "thrombotic microangiopathy",
+      "detail": "Thrombotic microangiopathy (TTP-HUS) was initially considered due to thrombocytopenia and schistocytes",
+      "source_span": "The combination of thrombocytopenia and schistocytes initially raised concern for a thrombotic microangiopathy.",
+      "yield_tier": 2,
+      "action_index": null
+    },
+    {
+      "index": 5,
+      "type": "action",
+      "summary": "abdominal ultrasonography and MRCP",
+      "detail": "Cross-sectional abdominal imaging to evaluate for mechanical cholestasis",
+      "source_span": "Cross\u2010sectional abdominal imaging with ultrasonography and magnetic resonance cholangiopancreatography (MRCP) demonstrated no biliary dilatation or other evidence of mechanical cholestasis.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 6,
+      "type": "result",
+      "summary": "abdominal imaging results",
+      "detail": "No biliary dilatation or mechanical cholestasis; hepatosplenomegaly confirmed (liver 21 cm, spleen 14 cm) with diffuse nodular splenic parenchyma and subcentimeter lymphadenopathy",
+      "source_span": "Cross\u2010sectional abdominal imaging with ultrasonography and magnetic resonance cholangiopancreatography (MRCP) demonstrated no biliary dilatation or other evidence of mechanical cholestasis. Hepatosplenomegaly was confirmed, with a liver span of 21 cm and a spleen of 14 cm.",
+      "yield_tier": 2,
+      "action_index": 5
+    },
+    {
+      "index": 7,
+      "type": "diagnosis",
+      "summary": "secondary hemophagocytic lymphohistiocytosis",
+      "detail": "Secondary HLH was considered due to splenomegaly, cytopenia, hypofibrinogenemia, and hyperferritinemia",
+      "source_span": "The combination of splenomegaly, cytopenia, hypofibrinogenemia, and a ferritin concentration above 2000 \u03bcg/L raised the possibility of secondary HLH",
+      "yield_tier": 2,
+      "action_index": null
+    },
+    {
+      "index": 8,
+      "type": "action",
+      "summary": "continuous venovenous hemodiafiltration",
+      "detail": "CVVHD delivered with a sepsis adsorption filter in predilution mode without systemic anticoagulation for 48 hours",
+      "source_span": "To manage life\u2010threatening uremia, the patient underwent continuous venovenous hemodiafiltration (CVVHD) as renal replacement therapy, delivered with a sepsis adsorption filter in predilution mode without systemic anticoagulation, for a total of 48 h over two consecutive days.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 9,
+      "type": "action",
+      "summary": "blood cultures and Wright agglutination test",
+      "detail": "Three sets of blood cultures and a Wright agglutination test obtained on admission",
+      "source_span": "On the day of admission, three sets of blood cultures and a Wright agglutination test were obtained",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 10,
+      "type": "action",
+      "summary": "empirical ceftriaxone",
+      "detail": "Empirical ceftriaxone (2 g/day intravenously) started",
+      "source_span": "and empirical ceftriaxone (2 g/day intravenously) was started.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 11,
+      "type": "diagnosis",
+      "summary": "leptospirosis",
+      "detail": "Leptospirosis considered as a leading alternative diagnosis",
+      "source_span": "leptospirosis (which characteristically presents with jaundice and AKI and is endemic in the region) was a leading alternative diagnosis.",
+      "yield_tier": 2,
+      "action_index": null
+    },
+    {
+      "index": 12,
+      "type": "result",
+      "summary": "Wright agglutination test result",
+      "detail": "Positive at a titer of 1/160",
+      "source_span": "On Day 1, the Wright agglutination test returned positive at a titer of 1/160",
+      "yield_tier": 2,
+      "action_index": 9
+    },
+    {
+      "index": 13,
+      "type": "action",
+      "summary": "doxycycline and rifampin",
+      "detail": "Oral doxycycline (100 mg twice daily) and rifampin (600 mg/day) added to therapy",
+      "source_span": "and oral doxycycline (100 mg twice daily) and rifampin (600 mg/day) were added.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 14,
+      "type": "result",
+      "summary": "blood culture results",
+      "detail": "All three blood cultures grew B. melitensis",
+      "source_span": "All three blood cultures subsequently grew B. melitensis, confirming the diagnosis.",
+      "yield_tier": 3,
+      "action_index": 9
+    },
+    {
+      "index": 15,
+      "type": "diagnosis",
+      "summary": "Brucella melitensis infection",
+      "detail": "Confirmed Brucella melitensis infection based on positive blood cultures and Wright agglutination test",
+      "source_span": "All three blood cultures subsequently grew B. melitensis, confirming the diagnosis.",
+      "yield_tier": 3,
+      "action_index": null
+    },
+    {
+      "index": 16,
+      "type": "action",
+      "summary": "transthoracic echocardiography",
+      "detail": "Transthoracic echocardiography to exclude infective endocarditis",
+      "source_span": "infective endocarditis was excluded by transthoracic echocardiography in accordance with the modified Duke criteria [6]; no vegetation, valvular dysfunction, or other evidence of endocarditis was found.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 17,
+      "type": "result",
+      "summary": "transthoracic echocardiography results",
+      "detail": "No vegetation, valvular dysfunction, or other evidence of endocarditis",
+      "source_span": "no vegetation, valvular dysfunction, or other evidence of endocarditis was found.",
+      "yield_tier": 1,
+      "action_index": 16
+    },
+    {
+      "index": 18,
+      "type": "action",
+      "summary": "serological testing for leptospirosis and vasculitides",
+      "detail": "Serological testing to rule out leptospirosis and vasculitides",
+      "source_span": "Serological testing for leptospirosis and vasculitides was negative",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 19,
+      "type": "result",
+      "summary": "serological testing results",
+      "detail": "Negative for leptospirosis and vasculitides",
+      "source_span": "Serological testing for leptospirosis and vasculitides was negative",
+      "yield_tier": 1,
+      "action_index": 18
+    },
+    {
+      "index": 20,
+      "type": "action",
+      "summary": "contrast-enhanced MRI of lumbar spine",
+      "detail": "Contrast-enhanced MRI performed due to lumbar pain",
+      "source_span": "lumbar pain prompted contrast\u2010enhanced magnetic resonance imaging, which excluded spondylodiscitis.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 21,
+      "type": "result",
+      "summary": "lumbar spine MRI results",
+      "detail": "Excluded spondylodiscitis",
+      "source_span": "which excluded spondylodiscitis.",
+      "yield_tier": 1,
+      "action_index": 20
+    },
+    {
+      "index": 22,
+      "type": "response",
+      "summary": "clinical and laboratory improvement",
+      "detail": "Progressive improvement in bilirubin and creatinine levels",
+      "source_span": "Progressive improvement in bilirubin and creatinine followed (Table 2)",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 23,
+      "type": "progression",
+      "summary": "discharge from hospital",
+      "detail": "Discharged after 2 weeks of inpatient monitoring and stabilization",
+      "source_span": "The patient was monitored as an inpatient for 2 weeks and discharged after clinical and laboratory stabilization.",
+      "yield_tier": 1,
+      "action_index": null
+    },
+    {
+      "index": 24,
+      "type": "response",
+      "summary": "completion of antibiotic therapy and biochemical normalization",
+      "detail": "Completed 6 weeks of doxycycline and rifampin with near-complete normalization of laboratory parameters",
+      "source_span": "He completed the remaining course of doxycycline plus rifampin on an outpatient basis, for a total treatment duration of 6 weeks.",
+      "yield_tier": 1,
+      "action_index": null
+    }
+  ]
+}

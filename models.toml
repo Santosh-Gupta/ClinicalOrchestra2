@@ -1,0 +1,107 @@
+# Model registry.
+#
+# This file is data, not code. Adding a model when one is released means adding a block here and
+# re-running the eval — no code changes. `scripts/discover_models.py` lists what each provider
+# actually offers, so IDs here can be verified rather than guessed.
+#
+# tier = "cheap"     run these first, and on every dataset change
+# tier = "expensive" run only after the cheap tier looks right
+#
+# enabled = false     present but not run (missing key, or deliberately held back)
+
+[[model]]
+key = "gemini-3.8-flash"
+provider = "gemini"
+model_id = "gemini-3.8-flash"
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai"
+api_key_env = "XM_GEMINI_KEY"
+api = "chat"
+tier = "cheap"
+enabled = true
+
+[[model]]
+key = "gemini-3.5-flash"
+provider = "gemini"
+model_id = "gemini-3.5-flash"
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai"
+api_key_env = "XM_GEMINI_KEY"
+api = "chat"
+tier = "cheap"
+enabled = true
+notes = "Kept from v1: mediocre at top-1, near the top at top-5. The latent-ability question came from this model, so it is worth carrying forward even though newer Flash models exist."
+
+[[model]]
+key = "claude-sonnet-5"
+provider = "anthropic"
+model_id = "claude-sonnet-5"
+base_url = "https://api.anthropic.com/v1"
+api_key_env = "XM_ANTHROPIC_KEY"
+api = "chat"
+tier = "cheap"
+enabled = true
+notes = "Anthropic's OpenAI-compat layer rejects response_format=json_object and a custom temperature; the client drops both. Not reproducible at temperature 0 — use multiple samples. Probed 2026-09-07: HTTP 400, credit balance too low. Account needs funding before this model can run."
+
+[[model]]
+key = "gpt-5.6-luna"
+provider = "openai"
+model_id = "gpt-5.6-luna"
+base_url = "https://api.openai.com/v1"
+api_key_env = "XM_OPENAI_KEY"
+api = "responses"
+tier = "cheap"
+enabled = true
+notes = "Probed 2026-09-07: rejects a custom temperature (the client drops it after a 400 and retries), so this model runs at its own default and is NOT reproducible at 0.0. Use multiple samples for it. Also spends reasoning tokens not counted in completion_tokens."
+
+[[model]]
+key = "glm-flash"
+provider = "zhipu"
+model_id = "UNVERIFIED-set-after-discovery"
+base_url = "https://api.z.ai/api/paas/v4"
+api_key_env = "XM_ZHIPU_KEY"
+api = "chat"
+tier = "cheap"
+enabled = false
+notes = "No key configured. Set XM_ZHIPU_KEY, run discover_models.py, then pin the real model_id. The base_url is the international endpoint; the mainland endpoint is https://open.bigmodel.cn/api/paas/v4."
+
+[[model]]
+key = "kimi-k3"
+provider = "moonshot"
+model_id = "UNVERIFIED-set-after-discovery"
+base_url = "https://api.moonshot.ai/v1"
+api_key_env = "XM_MOONSHOT_KEY"
+api = "chat"
+tier = "cheap"
+enabled = false
+notes = "No key configured. Set XM_MOONSHOT_KEY, run discover_models.py, then pin the real model_id."
+
+# --- expensive tier: do not run until the cheap tier is clean ---
+
+[[model]]
+key = "claude-opus-5"
+provider = "anthropic"
+model_id = "claude-opus-5"
+base_url = "https://api.anthropic.com/v1"
+api_key_env = "XM_ANTHROPIC_KEY"
+api = "chat"
+tier = "expensive"
+enabled = false
+
+[[model]]
+key = "gpt-6-astra"
+provider = "openai"
+model_id = "gpt-6-astra"
+base_url = "https://api.openai.com/v1"
+api_key_env = "XM_OPENAI_KEY"
+api = "responses"
+tier = "expensive"
+enabled = false
+
+[[model]]
+key = "gemini-3.1-pro"
+provider = "gemini"
+model_id = "gemini-3.1-pro-preview"
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai"
+api_key_env = "XM_GEMINI_KEY"
+api = "chat"
+tier = "expensive"
+enabled = false

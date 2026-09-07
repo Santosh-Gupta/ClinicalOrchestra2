@@ -209,14 +209,36 @@ def _publication_year(article: ET.Element) -> str | None:
 
 
 def _license_type(article: ET.Element) -> str | None:
+    """Return the most identifying licence string available.
+
+    Publishers express the licence in several places. Many current PMC records carry no
+    `license-type` attribute at all and instead put a NISO `ali:license_ref` child holding the
+    licence URL, so an attribute-only lookup reports "no licence" for articles that are plainly
+    licensed. A URL is preferred when present because it names the exact variant (by vs by-nc-nd),
+    which an attribute like "open-access" does not.
+    """
+    fallback: str | None = None
     for license_element in article.iter():
         if _strip_namespace(license_element.tag) != "license":
             continue
+        for child in license_element.iter():
+            if _strip_namespace(child.tag) == "license_ref":
+                url = _clean("".join(child.itertext()))
+                if url:
+                    return url
+                content_type = child.attrib.get("content-type")
+                if content_type:
+                    fallback = fallback or _clean(content_type)
         for key in ("license-type", "{http://www.w3.org/1999/xlink}href", "href"):
             value = license_element.attrib.get(key)
             if value:
-                return _clean(value)
-    return None
+                fallback = fallback or _clean(value)
+        # Last resort: a Creative Commons URL inside the human-readable licence paragraph.
+        for child in license_element.iter():
+            href = child.attrib.get("{http://www.w3.org/1999/xlink}href") or child.attrib.get("href")
+            if href and "creativecommons.org" in href:
+                return _clean(href)
+    return fallback
 
 
 def _sections(article: ET.Element) -> list[PmcSection]:
