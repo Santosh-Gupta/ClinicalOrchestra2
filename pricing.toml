@@ -1,0 +1,47 @@
+# API prices in USD per million tokens. Checked 2026-09-07.
+#
+# Prices move often and several of these are promotional, so every entry carries the date it was
+# checked and an expiry note where one applies. Re-check before quoting a budget.
+#
+# "cached_in" is the price for a reused prompt prefix. It matters more here than in most workloads:
+# every item from one case repeats that case's presentation and its course so far, so a case's items
+# share a long, strictly-growing prefix.
+
+["gemini-3.8-flash"]
+input = 0.75
+output = 3.75
+checked = "2026-09-07"
+note = "Introductory. Doubles to $1.50 / $7.50 on 2027-01-01. Output price covers thinking tokens, and this model spends them: a 74-token probe billed 245 total tokens."
+
+["gpt-5.6-luna"]
+input = 0.20
+output = 1.20
+checked = "2026-09-07"
+note = "Cut ~80% on 2026-07-30 (was $1.00 / $6.00). 1.1M context. Rejects a custom temperature, so it cannot be pinned to 0.0."
+
+["muse-spark-1.3"]
+input = 1.25
+output = 4.25
+cached_in = 0.15
+checked = "2026-09-07"
+note = "Meta, standard tier. A 'contributor' tier is far cheaper ($0.10 / $0.20) but Meta trains on submitted prompts and completions — unusable here, see below."
+
+["muse-spark-1.3-contributor"]
+input = 0.10
+output = 0.20
+checked = "2026-09-07"
+note = "DO NOT USE for benchmark items. Meta may train on prompts and completions, which would publish our post-cutoff test cases into a future training set and destroy the contamination control."
+
+["deepseek-v4-flash"]
+input = 0.22
+output = 0.66
+cached_in = 0.007
+checked = "2026-09-07"
+note = "Off-peak rate. Peak (01:00-04:00 and 06:00-10:00 UTC, Mon-Fri) is double: $0.44 / $1.32. Cache hits are ~30x cheaper than misses."
+
+["glm-5.3-flash"]
+input = 0.075
+output = 0.25
+cached_in = 0.015
+checked = "2026-09-07"
+note = "Launch promo, ends 2026-09-09 (midnight Singapore). List price after that is $0.15 / $0.50 with $0.03 cached input."
