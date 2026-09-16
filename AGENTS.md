@@ -5,20 +5,32 @@ changing anything.
 
 ## Read first
 
-1. **[README.md](README.md)** — what this project is and what state it's in.
-2. **[DESIGN_BRAINSTORM.md](DESIGN_BRAINSTORM.md)** — the design being built toward, and the open
-   questions that are not settled yet.
+1. **[HANDOFF.md](HANDOFF.md)** — current state, environment setup, what is not built yet, and the
+   gotchas that cost real debugging time. Start here.
+2. **[docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md)** — what has been decided and why, D-01
+   through D-15. Most of the code looks like it has removable complexity until you read the decision
+   that forced it.
 3. **[docs/LESSONS_FROM_V1.md](docs/LESSONS_FROM_V1.md)** — the mistakes this project exists to avoid.
    Most of the rules below look removable until you read why they're here.
+4. **[docs/BRAINSTORM_ROUND2.md](docs/BRAINSTORM_ROUND2.md)** — the design the current code follows,
+   and the proposed harness, which is not built.
+5. **[DESIGN_BRAINSTORM.md](DESIGN_BRAINSTORM.md)** — the earlier first-pass design, kept for
+   comparison. Parts of it were explicitly rejected (see D-05 and D-08). Do not implement from this
+   file without checking the decision registry first.
 
 ## Rules that came from v1 failures
 
 Each of these cost real time and money to learn. Don't drop one without writing down what changed.
 
-- **Every model call runs at temperature 0.0**, and every response is written to disk before anything
-  is derived from it. Note that temperature 0 is not the same as determinism — batched inference on
-  the provider side can reorder floating-point operations, so identical inputs can still produce
-  different outputs. Persist responses; don't assume you can regenerate them.
+- **Every model call runs at temperature 0.0 where the provider allows it**, and every response is
+  written to disk before anything is derived from it. Note that temperature 0 is not the same as
+  determinism — batched inference on the provider side can reorder floating-point operations, so
+  identical inputs can still produce different outputs. Persist responses; don't assume you can
+  regenerate them.
+  **Some models reject the parameter** and run at their own default — `gpt-5.6-luna` and Anthropic's
+  OpenAI-compat layer both do. The client drops temperature after a 400 and retries, and the probe
+  report records which models this happened to. Those models need multi-sampling instead of a pinned
+  temperature, and any claim of reproducibility must exclude them.
 - **Never re-judge identical output.** If a model's answer is unchanged between two conditions, reuse
   the earlier score. In v1, re-judging identical lists produced score differences that looked like
   real effects and were not.
@@ -46,8 +58,11 @@ Each of these cost real time and money to learn. Don't drop one without writing 
 
 ## When you make a change
 
-- A significant design decision goes in `docs/DESIGN_DECISIONS.md` with the reason and the evidence.
-  Superseding an earlier decision means writing a new entry that says so, not editing the old one away.
+- A significant design decision goes in `docs/DESIGN_DECISIONS.md` with the reason and the evidence,
+  as the next D-NN entry. Superseding an earlier decision means writing a new entry that says so and
+  marking the old one `Superseded by D-NN`, not editing the old one away.
+- Keep `HANDOFF.md` current as you go. It is what the next agent reads first, and a stale handoff is
+  worse than none.
 - Something durable learned about the data or the task goes in `journal.md`, citing the case.
 - A decision recorded only in a commit message is invisible to the next agent. Don't do that.
 

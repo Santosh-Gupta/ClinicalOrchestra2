@@ -1,4 +1,4 @@
-# API prices in USD per million tokens. Checked 2026-09-07.
+# API prices in USD per million tokens. Last reviewed 2026-09-16.
 #
 # Prices move often and several of these are promotional, so every entry carries the date it was
 # checked and an expiry note where one applies. Re-check before quoting a budget.
@@ -40,8 +40,8 @@ checked = "2026-09-07"
 note = "Off-peak rate; time-of-day pricing began 2026-08-16. Peak is exactly double ($0.014 / $0.44 / $1.32) during 01:00-04:00 and 06:00-10:00 UTC, Monday-Friday — see src/clinical_orchestra/peak.py. Cache hits are ~30x cheaper than misses. Note some pricing pages still show the older flat $0.14 / $0.28 rate, which predates the August change."
 
 ["glm-5.3-flash"]
-input = 0.075
-output = 0.25
-cached_in = 0.015
-checked = "2026-09-07"
-note = "Launch promo, ends 2026-09-09 (midnight Singapore). List price after that is $0.15 / $0.50 with $0.03 cached input."
+input = 0.15
+output = 0.50
+cached_in = 0.03
+checked = "2026-09-16"
+note = "List price. The 50% launch promo ($0.075 / $0.25 / $0.015) ended 2026-09-09 at 24:00 Singapore time; these are the post-promo rates."
