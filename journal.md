@@ -64,3 +64,45 @@ and 1 was over the length cap. 16 remained.
 
 Budget roughly 2.5 articles fetched per usable case. The underlying pool is large — the query matched
 4,719 — so this is a throughput cost, not a ceiling.
+
+---
+
+## 2026-09-16 — A real quote does not validate its attached claim
+
+A no-network synthetic control, case ID `synthetic-validation-control`, used the source
+`MRI showed no mass. The patient improved.` An `ACTION` event had summary `Appendectomy`, detail
+`An operation occurred.`, and the real `source_span` `MRI showed no mass.` Its presentation was
+`An unsupported diagnosis was known on admission.`
+
+`validate_timeline` returned `[]`: no violations. This is expected from the current implementation,
+which checks quote occurrence and structural links, not whether the quote entails the event or
+supports the presentation. The earlier quote-mutation controls still establish that string
+grounding works; they do not establish semantic or temporal validity.
+
+This synthetic failure does not establish an error rate in the existing case corpus. It establishes
+a missing check to address in the next design. See Open D-16 and `docs/BRAINSTORM_ROUND3.md`.
+
+
+---
+
+## 2026-09-17 — Synthetic construction controls and cache reuse
+
+Case `synthetic-dual-timeline` is an invented software fixture, not a published patient case.
+Its family-disclosed history physically predates admission but is learned on day 4. The new
+compiler keeps it out of earlier inputs and includes it after disclosure. Facts within each
+information phase are explicitly unordered. Exact-source quote checks reject corrupted spans;
+a separate negative control attaches a real assay-order quote to an appendectomy claim. The
+mechanical checker accepts the quote, while a scripted contradicted audit blocks dependent items.
+This verifies the audit gate, not whether a real model reliably catches that error.
+
+The two-role scripted demo exports eight pairs (four per constructor role: two action, one result,
+one response) from one case cluster. Run `runs/construction/20260917T155431Z-0b3a72ff` and its
+rerun `runs/construction/20260917T155431Z-43065792` have byte-identical inputs and outputs.
+The rerun makes zero HTTP requests and uses only cached scripted responses. Model labels in these
+runs identify configuration slots, not models that actually answered. All 52 no-network tests pass.
+
+Additional controls cover audit omissions, per-case rejection denominators, duplicate case IDs,
+malformed response retention, cache tampering, source/test split gates, request budgets, peak-window
+boundaries and retry guards. A response-log write failure stops without sending the request again.
+The compiler ending-invariance test does not establish full-source LLM extraction invariance.
+No paid inference, real label quality estimate or constructor ranking was obtained.

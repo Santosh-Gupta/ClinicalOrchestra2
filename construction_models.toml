@@ -1,0 +1,53 @@
+# Benchmark-construction model pool. No network calls occur without --live.
+# Documented IDs are not account probes. Missing credentials fail preflight.
+
+[[model]]
+key = "glm-requested-flash"
+provider = "zhipu"
+model_id = "UNVERIFIED-glm-3.5-flash"
+base_url = "https://api.z.ai/api/paas/v4"
+api_key_env = "XM_ZHIPU_KEY"
+api = "chat"
+tier = "construction"
+enabled = false
+id_status = "unresolved"
+notes = "User requested glm-3.5 flash. Await clarification: GLM-5.3-Flash or Step-3.5-Flash. Never silently substitute."
+
+[[model]]
+key = "deepseek-4.1-flash"
+provider = "deepseek"
+model_id = "deepseek-flash"
+base_url = "https://api.deepseek.com"
+api_key_env = "DEEPSEEK_API_KEY"
+api = "chat"
+tier = "construction"
+enabled = true
+id_status = "documented"
+off_peak_only = true
+verification_url = "https://api-docs.deepseek.com/news/news260910/"
+notes = "deepseek-flash currently serves V4.1 Flash; moving alias, not an immutable snapshot. Off-peak gate checks each HTTP attempt plus a timeout margin."
+
+[[model]]
+key = "gemini-3.8-flash"
+provider = "gemini"
+model_id = "gemini-3.8-flash"
+base_url = "https://generativelanguage.googleapis.com/v1beta/openai"
+api_key_env = "XM_GEMINI_KEY"
+api = "chat"
+tier = "construction"
+enabled = true
+id_status = "documented"
+verification_url = "https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash"
+
+[[model]]
+key = "muse-spark-1.3"
+provider = "meta"
+model_id = "muse-spark-1.3"
+base_url = "https://api.meta.ai/v1"
+api_key_env = "MODEL_API_KEY"
+api = "chat"
+tier = "construction"
+enabled = true
+id_status = "documented"
+verification_url = "https://github.com/meta-models/meta-model-cookbook/blob/main/01_api_fundamentals/README.md"
+notes = "Standard tier. Contributor usage requires an explicitly separate registry entry and is forbidden for unpublished test splits."

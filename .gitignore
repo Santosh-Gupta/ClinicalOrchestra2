@@ -20,6 +20,7 @@ data/eval/
 .env.local
 *.env.local
 .env.crossmodel.local
+.env.construction.local
 *.local.json
 *.private.json
 

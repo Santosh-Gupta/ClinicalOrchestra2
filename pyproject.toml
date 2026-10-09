@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "clinical-orchestra-two"
 version = "0.0.1"
-description = "A benchmark and harness for predicting the next best step in a clinical case."
+description = "A source-grounded benchmark for predicting documented clinical events."
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
@@ -15,3 +15,6 @@ dependencies = []
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"clinical_orchestra.construction" = ["prompts/*.txt"]

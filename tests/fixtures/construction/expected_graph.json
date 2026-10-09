@@ -1,0 +1,331 @@
+{
+  "phases": [
+    {
+      "id": "k0",
+      "rank": 0,
+      "evidence": [
+        {
+          "span_id": "p0000",
+          "quote": "On admission, the patient had fever."
+        }
+      ]
+    },
+    {
+      "id": "k1",
+      "rank": 1,
+      "evidence": [
+        {
+          "span_id": "p0001",
+          "quote": "On day 1, a serum assay was ordered."
+        }
+      ]
+    },
+    {
+      "id": "k2",
+      "rank": 2,
+      "evidence": [
+        {
+          "span_id": "p0002",
+          "quote": "On day 2, the assay was reported negative to the team."
+        }
+      ]
+    },
+    {
+      "id": "k3",
+      "rank": 3,
+      "evidence": [
+        {
+          "span_id": "p0003",
+          "quote": "After reading the assay result on day 2, the team started supportive treatment."
+        }
+      ]
+    },
+    {
+      "id": "k4",
+      "rank": 4,
+      "evidence": [
+        {
+          "span_id": "p0005",
+          "quote": "On day 4, family disclosed that symptoms had begun two days before admission."
+        }
+      ]
+    },
+    {
+      "id": "k5",
+      "rank": 5,
+      "evidence": [
+        {
+          "span_id": "p0004",
+          "quote": "On day 5, the team documented improvement after supportive treatment."
+        }
+      ]
+    }
+  ],
+  "facts": [
+    {
+      "id": "f0",
+      "patient_id": "patient",
+      "kind": "context",
+      "claim": "The patient had fever on admission.",
+      "evidence": [
+        {
+          "span_id": "p0000",
+          "quote": "On admission, the patient had fever."
+        }
+      ],
+      "clinical_time": {
+        "description": "admission",
+        "evidence": [
+          {
+            "span_id": "p0000",
+            "quote": "On admission, the patient had fever."
+          }
+        ]
+      },
+      "clinical_after": [
+        "f5"
+      ],
+      "known_phase": "k0",
+      "known_evidence": [
+        {
+          "span_id": "p0000",
+          "quote": "On admission, the patient had fever."
+        }
+      ],
+      "status": "observed",
+      "linked_action_id": null,
+      "endpoint": null,
+      "endpoint_evidence": []
+    },
+    {
+      "id": "f1",
+      "patient_id": "patient",
+      "kind": "action",
+      "claim": "On day 1, a serum assay was ordered.",
+      "evidence": [
+        {
+          "span_id": "p0001",
+          "quote": "On day 1, a serum assay was ordered."
+        }
+      ],
+      "clinical_time": {
+        "description": "day 1",
+        "evidence": [
+          {
+            "span_id": "p0001",
+            "quote": "On day 1, a serum assay was ordered."
+          }
+        ]
+      },
+      "clinical_after": [
+        "f0"
+      ],
+      "known_phase": "k1",
+      "known_evidence": [
+        {
+          "span_id": "p0001",
+          "quote": "On day 1, a serum assay was ordered."
+        }
+      ],
+      "status": "ordered",
+      "linked_action_id": null,
+      "endpoint": null,
+      "endpoint_evidence": []
+    },
+    {
+      "id": "f2",
+      "patient_id": "patient",
+      "kind": "result",
+      "claim": "On day 2, the serum assay was reported negative.",
+      "evidence": [
+        {
+          "span_id": "p0002",
+          "quote": "On day 2, the assay was reported negative to the team."
+        }
+      ],
+      "clinical_time": {
+        "description": "day 2",
+        "evidence": [
+          {
+            "span_id": "p0002",
+            "quote": "On day 2, the assay was reported negative to the team."
+          }
+        ]
+      },
+      "clinical_after": [
+        "f1"
+      ],
+      "known_phase": "k2",
+      "known_evidence": [
+        {
+          "span_id": "p0002",
+          "quote": "On day 2, the assay was reported negative to the team."
+        }
+      ],
+      "status": "observed",
+      "linked_action_id": "f1",
+      "endpoint": null,
+      "endpoint_evidence": []
+    },
+    {
+      "id": "f3",
+      "patient_id": "patient",
+      "kind": "action",
+      "claim": "After reading the result on day 2, supportive treatment was started.",
+      "evidence": [
+        {
+          "span_id": "p0003",
+          "quote": "After reading the assay result on day 2, the team started supportive treatment."
+        }
+      ],
+      "clinical_time": {
+        "description": "day 2",
+        "evidence": [
+          {
+            "span_id": "p0003",
+            "quote": "After reading the assay result on day 2, the team started supportive treatment."
+          }
+        ]
+      },
+      "clinical_after": [
+        "f2"
+      ],
+      "known_phase": "k3",
+      "known_evidence": [
+        {
+          "span_id": "p0003",
+          "quote": "After reading the assay result on day 2, the team started supportive treatment."
+        }
+      ],
+      "status": "performed",
+      "linked_action_id": null,
+      "endpoint": null,
+      "endpoint_evidence": []
+    },
+    {
+      "id": "f4",
+      "patient_id": "patient",
+      "kind": "response",
+      "claim": "On day 5, the patient improved after supportive treatment.",
+      "evidence": [
+        {
+          "span_id": "p0004",
+          "quote": "On day 5, the team documented improvement after supportive treatment."
+        }
+      ],
+      "clinical_time": {
+        "description": "day 5",
+        "evidence": [
+          {
+            "span_id": "p0004",
+            "quote": "On day 5, the team documented improvement after supportive treatment."
+          }
+        ]
+      },
+      "clinical_after": [
+        "f3"
+      ],
+      "known_phase": "k5",
+      "known_evidence": [
+        {
+          "span_id": "p0004",
+          "quote": "On day 5, the team documented improvement after supportive treatment."
+        }
+      ],
+      "status": "observed",
+      "linked_action_id": "f3",
+      "endpoint": "day 5",
+      "endpoint_evidence": [
+        {
+          "span_id": "p0004",
+          "quote": "On day 5, the team documented improvement after supportive treatment."
+        }
+      ]
+    },
+    {
+      "id": "f5",
+      "patient_id": "patient",
+      "kind": "context",
+      "claim": "On day 4, family reported symptoms began two days before admission.",
+      "evidence": [
+        {
+          "span_id": "p0005",
+          "quote": "On day 4, family disclosed that symptoms had begun two days before admission."
+        }
+      ],
+      "clinical_time": {
+        "description": "two days before admission",
+        "evidence": [
+          {
+            "span_id": "p0005",
+            "quote": "On day 4, family disclosed that symptoms had begun two days before admission."
+          }
+        ]
+      },
+      "clinical_after": [],
+      "known_phase": "k4",
+      "known_evidence": [
+        {
+          "span_id": "p0005",
+          "quote": "On day 4, family disclosed that symptoms had begun two days before admission."
+        }
+      ],
+      "status": "observed",
+      "linked_action_id": null,
+      "endpoint": null,
+      "endpoint_evidence": []
+    }
+  ],
+  "coverage": [
+    {
+      "span_id": "p0000",
+      "fact_ids": [
+        "f0"
+      ],
+      "disposition": "represented",
+      "reason": "Synthetic patient event represented."
+    },
+    {
+      "span_id": "p0001",
+      "fact_ids": [
+        "f1"
+      ],
+      "disposition": "represented",
+      "reason": "Synthetic patient event represented."
+    },
+    {
+      "span_id": "p0002",
+      "fact_ids": [
+        "f2"
+      ],
+      "disposition": "represented",
+      "reason": "Synthetic patient event represented."
+    },
+    {
+      "span_id": "p0003",
+      "fact_ids": [
+        "f3"
+      ],
+      "disposition": "represented",
+      "reason": "Synthetic patient event represented."
+    },
+    {
+      "span_id": "p0004",
+      "fact_ids": [
+        "f4"
+      ],
+      "disposition": "represented",
+      "reason": "Synthetic patient event represented."
+    },
+    {
+      "span_id": "p0005",
+      "fact_ids": [
+        "f5"
+      ],
+      "disposition": "represented",
+      "reason": "Synthetic patient event represented."
+    }
+  ],
+  "thesis": [],
+  "unresolved": []
+}

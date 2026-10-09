@@ -1,5 +1,87 @@
 # Handoff — Clinical Orchestra 2
 
+**Project reference update, 2026-10-09:** [PROJECT_WATCHLIST.md](docs/PROJECT_WATCHLIST.md)
+maps likely implementation problems to outside projects, including the closely related ClinicBench
+next-action forecast. Recheck current source and task assumptions before borrowing a method. This is
+a reference list, not an implemented monitor or a change to D-20.
+
+**Science harness update, 2026-10-08:** read the
+[Claude Science and comparator investigation](docs/SCIENCE_HARNESS_INTELLIGENCE_2026-10-08.md),
+then **D-20** and the updated [architecture](docs/NEXT_STEP_ARCHITECTURE.md). Official Science docs
+confirm code-mediated MCP calls, execution provenance and a reviewer that checks claims against
+records rather than establishing clinical correctness. Prime Agent's public runtime and Kosmos's
+execution separation inform the plan. The design separates policy, broker, optional runtime and
+durable evidence; adds a bounded programmatic strategy alongside the one-action control; and
+specifies nested accounting, review completion and recovery. Skills and cross-item memory stay
+frozen during evaluation. This was documentation and read-only research: no new runtime dependency,
+prompt change, paid call or implementation. Start with contracts and deterministic scoring as below.
+
+**Architecture update, 2026-10-05:** Santosh reaffirmed the general next-step scope. Read
+[NEXT_STEP_ARCHITECTURE.md](docs/NEXT_STEP_ARCHITECTURE.md) and **D-19** for the design baseline,
+then the [focused forecasting research](docs/NEXT_STEP_FORECASTING_LITERATURE.md). The design keeps
+the five existing families and adds explicit endpoint/observation contracts, family-aware item
+allocation, an input-only solver boundary, and separate probability and operational reporting.
+Implementation has not started. The first implementation work is contracts/fixtures and the
+deterministic evaluation core, then versioned construction changes and a real development pilot
+when models are available. Current construction-v1 exports and source code remain unchanged.
+
+**Research update, 2026-10-05:** read
+[the harness literature review](docs/HARNESS_LITERATURE_REVIEW_2026-10-04.md) before designing the
+evaluation runner or inference harness. It covers 31 research entries across medicine, diagnosis,
+scientific agents, context methods and evaluation, plus a repository shortlist and proposed
+experiments. It recommends a small forecasting loop with separately measured additions for
+retrieval, critics, programmatic orchestration and editable context. These are proposals; no new
+architecture decision was adopted, no harness was implemented, and no model experiments were run
+for this review. The construction implementation status below is unchanged.
+
+**Current state, 2026-09-17:** the new `construction-v1` prompts and API infrastructure are implemented.
+Read [docs/CONSTRUCTION_PIPELINE.md](docs/CONSTRUCTION_PIPELINE.md) for commands, schemas, outputs,
+model setup and limitations, then **D-17/D-18** in
+[docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md). The earlier Round 3 brainstorm is partly adopted;
+its remaining experiments are still proposals.
+
+The pipeline independently extracts two linked chronologies twice: the physical clinical course and
+what the team knew. Code compiles prospective inputs using the information chronology. A prefix-only
+request creates alternatives; a separate source-aware audit checks claims, omissions, availability
+and label mapping before paired inputs and hidden outputs are exported. It forecasts the documented
+course. It does not label the best clinical action. Quote membership alone was shown insufficient
+by a synthetic control, so acceptance now also depends on a model-assisted semantic/temporal audit.
+
+**Verified:** 52 no-network tests pass. The scripted synthetic demo writes eight pairs from one case
+across two constructor roles. Repeating it reuses saved responses and produces identical exports.
+Latest demo: `runs/construction/20260917T155431Z-0b3a72ff`; cache rerun:
+`runs/construction/20260917T155431Z-43065792`. These are software fixtures, not real model evaluations.
+No paid API construction calls were made. No clinical validity or constructor ranking is established.
+
+**Model pool:** `construction_models.toml` holds DeepSeek 4.1 Flash (`deepseek-flash`, off-peak only),
+Gemini 3.8 Flash and Muse Spark 1.3, plus a disabled unresolved GLM slot. Santosh requested “glm-3.5
+flash”; clarification was requested about GLM-5.3-Flash versus Step-3.5-Flash and has not yet arrived.
+Do not silently substitute. Credentials are named in `.env.construction.example`; missing keys block
+selected live models. Public documentation was checked, accounts were not probed. Anthropic funding
+is not a dependency of this requested pool. Use `--models` to select an available subset explicitly.
+
+**Run locally:** `PYTHONPATH=src python3.11 scripts/construct_benchmark.py` prints a no-network plan.
+Add `--demo` for the offline fixture. A paid pilot requires `--live`, a directory of explicitly
+assigned development cases and at least two provider families. Start with one development case.
+Full commands are in the pipeline guide. Python 3.11 is required; HTTPS still needs the certificate
+setup below. Tests and demo do not need keys or network. DeepSeek defers with exit 75 during peak
+windows or near their start; rerun later with the same cache. No background task is scheduled.
+
+**Next work:** resolve the GLM name; add keys; discover account model IDs; run a small development
+comparison and inspect rejection reasons, source coverage, OTHER frequency and exported pairs.
+Only then freeze prompts and develop the evaluation runner, proper probability scoring and difficulty
+experiments. Do not tune on the existing 99 post-cutoff items or replace a reference set with cases
+selected by model failures/disagreement. Keep statistics clustered by case.
+
+The original pipeline/data and `models.toml` are unchanged. New source and documentation changes
+are local and uncommitted. The shared chat client now supports attempt guards and raw response
+observers, needed to enforce budgets and preserve failed calls. The older decisions and snapshot
+below are historical wherever D-18 or this update supersedes them.
+
+---
+
+## Historical first-build handoff (2026-09-16)
+
 Written 2026-09-16, at the end of the first build session. Everything below is current as of commit
 `a69be2b` plus the documentation commit that adds this file.
 

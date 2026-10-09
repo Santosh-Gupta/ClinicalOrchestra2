@@ -12,7 +12,7 @@ import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Callable
 
 from .ratelimit import NoOpRateLimiter, RateLimiter, SlidingWindowRateLimiter
 
@@ -82,6 +82,9 @@ class OpenAICompatibleChatClient:
         rate_limiter: RateLimiter | None = None,
         verify_tls: bool | None = None,
         system_prompt: str = DEFAULT_SYSTEM_PROMPT,
+        extra_body: dict[str, Any] | None = None,
+        before_request: Callable[[], None] | None = None,
+        observer: Callable[[dict[str, Any]], None] | None = None,
     ) -> None:
         if not api_key:
             raise ValueError("api_key is required")
@@ -93,6 +96,11 @@ class OpenAICompatibleChatClient:
         self.backoff_base_seconds = backoff_base_seconds
         self.backoff_cap_seconds = backoff_cap_seconds
         self.system_prompt = system_prompt
+        self.extra_body = extra_body or {}
+        if set(self.extra_body) - {"thinking", "reasoning_effort"}:
+            raise ValueError("extra_body only permits thinking and reasoning_effort")
+        self.before_request = before_request
+        self.observer = observer
         # No-op by default (DeepSeek is concurrency-limited, not rate-limited). Providers with
         # RPM/TPM caps pass a shared SlidingWindowRateLimiter so requests are throttled proactively.
         self.rate_limiter: RateLimiter = rate_limiter or NoOpRateLimiter()
@@ -167,6 +175,7 @@ class OpenAICompatibleChatClient:
             # deprecate the temperature parameter.
             payload.pop("response_format", None)
             payload.pop("temperature", None)
+        payload.update(self.extra_body)
         data = json.dumps(payload).encode("utf-8")
         request = urllib.request.Request(
             url,
@@ -184,15 +193,23 @@ class OpenAICompatibleChatClient:
             # Proactively wait for RPM/TPM headroom before sending. Each retry is a real request to
             # the provider, so it must re-acquire (no-op under the DeepSeek default).
             self.rate_limiter.acquire(tokens=token_estimate)
+            # Outside the retry handler: scheduling/budget deferrals must stop immediately.
+            if self.before_request:
+                self.before_request()
+            if self.observer:
+                self.observer({"event": "request", "attempt": attempt + 1,
+                               "endpoint": url, "payload": payload})
             try:
                 with urllib.request.urlopen(request, timeout=self.timeout_seconds, context=self._ssl_context) as response:
-                    raw = json.loads(response.read().decode("utf-8"))
-                break
+                    body_text = response.read().decode("utf-8")
             except urllib.error.HTTPError as exc:
+                body = exc.read().decode("utf-8", errors="replace").replace(self.api_key, "[REDACTED]")
+                if self.observer:
+                    self.observer({"event": "http_error", "attempt": attempt + 1,
+                                   "status": exc.code, "body": body})
                 if exc.code in _RETRYABLE_STATUS and attempt < self.max_retries:
                     time.sleep(self._retry_delay(attempt, exc.headers.get("Retry-After")))
                     continue
-                body = exc.read().decode("utf-8", errors="replace")
                 if exc.code == 400 and "temperature" in body.lower() and "temperature" in payload:
                     # Some models reject a custom temperature (e.g. certain GPT reasoning-model chat
                     # surfaces, Opus "deprecated", o-series). Drop it and retry once — the model then
@@ -208,20 +225,31 @@ class OpenAICompatibleChatClient:
                     continue
                 raise RuntimeError(f"model API HTTP {exc.code}: {body[:1000]}") from exc
             except (urllib.error.URLError, TimeoutError, http.client.HTTPException, OSError) as exc:
+                if self.observer:
+                    self.observer({"event": "transport_error", "attempt": attempt + 1,
+                                   "error": str(exc).replace(self.api_key, "[REDACTED]")})
                 # Transient connection faults (incl. RemoteDisconnected / reset sockets) are common
                 # under concurrency; retry with backoff before giving up.
                 if attempt < self.max_retries:
                     time.sleep(self._retry_delay(attempt, None))
                     continue
-                raise RuntimeError(f"model API request failed after {attempt + 1} attempts: {exc}") from exc
-        assert raw is not None
+                detail = str(exc).replace(self.api_key, "[REDACTED]")
+                raise RuntimeError(f"model API request failed after {attempt + 1} attempts: {detail}") from exc
+            # Logging/parsing failures are not transport failures and must never trigger a paid retry.
+            body_text = body_text.replace(self.api_key, "[REDACTED]")
+            if self.observer:
+                self.observer({"event": "response", "attempt": attempt + 1, "body": body_text})
+            raw = json.loads(body_text)
+            break
+        if raw is None:
+            raise RuntimeError("model API exhausted retries without a complete response")
         latency_ms = int((time.monotonic() - started) * 1000)
         choices = raw.get("choices")
         if not isinstance(choices, list) or not choices:
             raise RuntimeError("model API response did not contain choices")
         # LOUD truncation detection: a response cut off at the token limit yields invalid/partial JSON
         # that would otherwise be silently swallowed downstream (empty floor, dropped paper, etc.).
-        # Raise so the retry loop re-issues, and if it persists the case fails visibly instead of degrading.
+        # Fail without automatic resampling; the caller may deliberately change the token budget.
         finish_reason = choices[0].get("finish_reason")
         if finish_reason == "length":
             budget = payload.get("max_tokens") or payload.get("max_completion_tokens")

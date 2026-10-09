@@ -30,6 +30,8 @@ Only task-neutral infrastructure was copied: `model_client.py`, `ratelimit.py`, 
 
 ## D-02 — The task is next-step prediction, not diagnosis. **Adopted**
 
+**Partially superseded by D-18:** documented-event forecasting does not establish optimal care or eliminate construction bias.
+
 v1 died of two problems. Both are addressed by the task change:
 
 1. *Circular construction.* An LLM had to invent a fair puzzle and its answer, so test quality was
@@ -43,6 +45,8 @@ It is also closer to real practice: medicine is a sequence of decisions, not one
 ---
 
 ## D-03 — A "step" is any next event, typed. **Adopted**
+
+**Partially superseded by D-18:** keep the five types; use explicit knowledge cutoffs and endpoints rather than making every timeline row a question.
 
 Santosh's extension to the original design, and the reason the dataset is dense. The next step is
 whatever happened next, of five types:
@@ -80,6 +84,8 @@ without reasoning. Implemented in `items.QUESTIONS`.
 
 ## D-05 — Grade by information yield, not sequence position. **Adopted**
 
+**Superseded by D-18 for construction-v1:** retrospective information yield is not the primary forecasting label or score. Legacy code remains reproducible.
+
 The original design graded by position: immediate next = full credit, later = decaying credit.
 Rejected. Case reports are published partly *because* the workup was circuitous, so position decay
 rewards reproducing detours the team should not have taken.
@@ -102,6 +108,8 @@ since inflated importance would flatten the grading the whole metric rests on.
 
 ## D-06 — Every extracted event must quote the source, verbatim. **Adopted**
 
+**Partially superseded by D-18:** exact span grounding plus semantic and temporal audit replaces quote membership as a sufficient acceptance rule.
+
 This is the single mechanism that stops v2 from repeating v1's central failure. The extraction model
 must supply a `source_span` for every event, and `events.is_grounded` checks it appears in the case
 text after normalisation. An event whose quote cannot be found is **dropped, not repaired** — a quote
@@ -121,6 +129,8 @@ genuinely copying faithfully.
 
 ## D-07 — Partial credit is later-only, type-matched, and capped. **Adopted**
 
+**Partially superseded by D-18:** legacy partial credit remains an exploratory secondary measure; it is not used in construction-v1 labels.
+
 Santosh's requirement was partial credit when a guess appears elsewhere in the case. Three rules make
 that safe; all three are enforced in `items.credit_for` and covered by tests.
 
@@ -138,6 +148,8 @@ within one case. The degenerate strategy is directly detectable.
 ---
 
 ## D-08 — No ontology mapping. Use a small closed vocabulary. **Agreed, not implemented**
+
+**Partially superseded by D-18:** retain rejection of ontology mapping; replace the planned hand-curated vocabulary with frozen per-item candidate IDs.
 
 The original design mapped predictions and golds to LOINC, CPT/SNOMED, and RxNorm for deterministic
 scoring. Rejected for two reasons:
@@ -158,6 +170,8 @@ granularity. Small enough to audit by hand, coarse enough that mapping is reliab
 
 ## D-09 — Add a deterministic ranking task beside generation. **Agreed, not implemented**
 
+**Superseded by D-18 for construction-v1:** blind candidate construction with a residual option replaces gold insertion and yield-tier nDCG as the primary task. The probability scorer is still to be built.
+
 Generation is the realistic task but hard to score. Ranking a fixed candidate slate is trivially
 deterministic — no judge, no mapping, no threshold.
 
@@ -174,6 +188,8 @@ The hard negatives are what make this non-trivial and are the part worth spendin
 ---
 
 ## D-10 — Select cases objectively; calibrate difficulty by disagreement. **Adopted / Agreed**
+
+**Partially superseded by D-18:** objective reference sampling remains; disagreement-selected difficulty subsets must be reported separately and may not replace the reference set.
 
 *Adopted:* case selection uses only publication window, article type, licence, and length. No model
 sees a case before it is cached, so selection cannot be conditioned on model behaviour. v1's hard set
@@ -248,3 +264,196 @@ Full statements in `AGENTS.md`; the reasoning is in `docs/LESSONS_FROM_V1.md`.
 - A tool adds or flags; it never overwrites.
 - A checker must be independent of what it checks.
 - Fail loudly: truncation, empty plans, dropped items, changed denominators.
+
+---
+
+## D-16 — Proposal: evidence-audited event forecasting under the no-human constraint. **Partially adopted by D-18**
+
+Santosh requested a new brainstorm of the most robust and efficient pipeline from licensed case
+reports, including prompts and model roles, with no human reviewers. The full proposal is in
+[BRAINSTORM_ROUND3.md](BRAINSTORM_ROUND3.md). The original proposal below is preserved. D-18 records the implemented subset and explicitly
+supersedes affected earlier decisions; experiments outside that subset remain proposals.
+
+The design review distinguishes three things: what a report says happened, what was predictable
+from the information available beforehand, and what would have been best clinical care. Existing
+source labels establish the first, subject to extraction accuracy. The current action prompt asks
+for the third. Realized yield does not establish prospective action quality, an unperformed
+alternative is not necessarily inappropriate, and multi-model disagreement selection is still
+model-conditioned selection.
+
+A synthetic negative control also showed that `validate_timeline` accepts a real quote supporting
+an unrelated event and an unsupported presentation. Quote membership is necessary provenance but
+does not establish entailment or information availability; see the 2026-09-16 journal entry.
+
+Proposed changes: independent evidence extraction; per-fact support and knowledge time; mechanical
+state rendering; prefix-only question audits; source-aware label/leakage audits; exact candidate
+IDs and probability scoring; an objectively sampled reference set plus a separately reported hard
+subset; and a separate development corpus followed by fresh confirmatory cases. The author's thesis
+would guide target discovery while remaining hidden from prospective questions.
+
+If adopted, explicitly supersede the affected parts of D-02/D-03/D-05/D-06/D-08/D-09/D-10 and clarify
+D-07's secondary role before changing code. Preserve the five event types, per-type reporting,
+verbatim grounding, case clustering, model registry and response logging. The existing
+implementation and historical decisions remain intact during this proposal stage.
+
+---
+
+## D-17 — Maintain linked clinical-course and clinician-information chronologies. **Adopted in construction-v1 by D-18**
+
+Santosh explicitly requested organizing both what physically happened to the patient and what the
+medical professionals knew, in chronological order, and using both to create inputs and outputs.
+
+Maintain a source-supported clinical-course chronology and a separate information-availability
+chronology. The latter controls visible inputs at each cutoff. Hidden targets may concern later
+clinical developments or later discoveries of earlier events; distinguish these in task metadata.
+Do not expose an earlier physical event before evidence says the team knew about it. Do not infer
+unreported biological onset or a complete physical state from the final diagnosis.
+
+Preserve uncertainty and partial ordering. For available results versus actual clinician awareness,
+use only distinctions the source supports and state the availability proxy where necessary. Team
+suspicions are beliefs, not established patient facts. Later corrections must not overwrite the
+historical information state.
+
+Initially agreed as an extension of D-16; the first implementation is now specified by D-18.
+Further proposed checks and experiments are in section 10 of
+[BRAINSTORM_ROUND3.md](BRAINSTORM_ROUND3.md).
+
+
+---
+
+## D-18 — Implement the first auditable construction pipeline and requested constructor pool. **Adopted, 2026-09-17**
+
+Santosh authorized setting up prompts and API infrastructure to convert a batch of case studies
+into multiple benchmark inputs and outputs, comparing GLM “3.5 flash,” DeepSeek 4.1 Flash off peak,
+Gemini 3.8 Flash and Muse Spark 1.3. The first implementation is isolated in
+`clinical_orchestra.construction`; the older modules and data are retained for reproducibility.
+Operational details, commands and limitations are in [CONSTRUCTION_PIPELINE.md](CONSTRUCTION_PIPELINE.md).
+
+**Task and labels.** Questions forecast the next documented action, result, diagnostic assessment,
+clinical development or response at a specified endpoint. They do not ask what would constitute
+optimal care. Two independent source extractions represent clinical timing separately from information
+availability. Exact quotations and complete paragraph coverage are required. Code compiles visible
+states from knowledge phases; it never serializes hidden thesis metadata or future facts. Facts in
+one information phase are explicitly unordered. Unknown ordering is not filled in from prose order.
+
+A prefix-only request constructs plausible alternatives without the gold or source ending. Code adds
+OTHER and shuffles labels and positions. A source-aware auditor from another provider checks claims,
+omissions, chronology and every visible fact, then maps the documented answer to one frozen candidate
+ID. Ambiguous/unsupported items are rejected. Semantic acceptance is still model-assisted; exact-ID
+scoring does not make the labels deterministic or clinically certified. Probability predictions are
+specified in exported inputs; the evaluation runner and probability scorer are not implemented yet.
+
+**Explicit supersessions.** D-02/D-03 retain next-event typing but lose claims that source extraction
+alone removes circularity or yields a question for every event. D-05's retrospective yield grading,
+D-08's hand-curated vocabulary and D-09's gold-inserted yield-tier ranking are replaced for this new
+path. D-06's verbatim-support requirement is retained and strengthened with semantic/temporal audits;
+quote membership is insufficient. D-07 is secondary legacy exploration, not a new primary score.
+D-10 retains objective selection but disagreement-selected subsets must remain separately reported.
+D-01, D-04 and D-11 through D-15 otherwise remain. No ontology mapping is reintroduced.
+
+**API behavior.** The construction registry contains only the requested pool. Three IDs are documented,
+not live-probed. The GLM slot remains disabled pending name clarification; missing keys are reported,
+not silently skipped. Two provider families suffice for a pilot, three separate constructor/witness/
+auditor roles when available. Requests are stateless and case-ordered. Every transport response is
+logged before parsing; identical stage requests reuse exact saved responses. Failures and denominators
+remain visible. Request hashes include prompts, schema, model settings and trial. Live requests require
+`--live`. DeepSeek's schedule gate applies before every retry, with a timeout margin; it controls
+dispatch rather than certifying the provider's eventual charge.
+
+**Evaluation boundary.** Development comparison requires declared development cases. Test construction
+requires preselected roles with `--purpose test --single`. The old post-cutoff sample is not repurposed
+as development. Case clustering is retained. The current per-case cap is a pilot bound, not a claim
+of representative sampling. Reviewer rotation means constructor comparisons also change reviewer
+configuration; report that limitation rather than attributing every difference to the constructor.
+
+**Evidence so far.** Fifty-two no-network tests pass, including synthetic temporal leakage, wrong claims
+attached to real quotes, audit omission, schema failure, response reuse, transport logging and peak
+boundaries. The scripted demo exports eight pairs from one invented patient across two constructor
+roles. These establish software behavior only. No paid construction calls, real constructor-quality
+estimates, difficulty calibration or clinical label error estimates have been obtained.
+
+---
+
+## D-19 — Architect a shared harness for typed next-step forecasts. **Adopted as design, 2026-10-05; implementation pending**
+
+**Extended by D-20** for programmatic execution, evidence records, review and recovery. The one-action
+policy remains an experimental control; the task contracts and evaluation rules below remain in force.
+
+Santosh reaffirmed that the project covers next tests, progression, outcomes and other mineable
+continuations, with diagnosis only one task family, and authorized further relevant research and
+overall architecture work. The design is in [NEXT_STEP_ARCHITECTURE.md](NEXT_STEP_ARCHITECTURE.md);
+additional forecasting evidence is in [NEXT_STEP_FORECASTING_LITERATURE.md](NEXT_STEP_FORECASTING_LITERATURE.md).
+
+Retain D-17's two chronologies and D-18's five families, independent extraction, prefix-only
+alternatives, source audit and exact candidate IDs. Add explicit forecast contracts for target scope,
+visible anchor, endpoint kind and origin, and observation status. Distinguish clinician behavior,
+information discovery, documented assessments and clinical developments. An unreported outcome is
+not a negative label; OTHER is not missingness or abstention. Treatment-associated responses do not
+establish causal effects. No optimal-care or hypothetical-intervention target is added.
+
+The next construction version will allocate a fixed per-case cap across eligible task families
+under a declared deterministic policy. This replaces the early-first allocation for that new
+version only; D-18's implemented pilot cap and saved artifacts remain unchanged. Endpoints chosen
+retrospectively from reporting must be identified and separated from prospective-window results.
+Ambiguous simultaneous events require supported bundles or explicit exclusion, not invented order.
+
+Use one inference engine with family-specific instructions. Begin with direct and repeated-request
+probability baselines, then measure each added mechanism separately. Preserve initial predictions;
+tools add or flag evidence and any revised forecast is a separate saved candidate. Fresh solver
+state at every cutoff prevents cross-item information leakage. Keep current temperature, source
+exclusion, split, logging and independent-checker rules.
+
+Separate construction, input-only solving and post-run scoring. The worker cannot access hidden
+labels, full sources, or source-aware audit records. Broker evidence reads so even a quoted source
+paragraph cannot disclose future clauses. Enforce credentials, tool permissions and all nested-call
+budgets on the host. Inspect AI is the first outer-runner integration candidate; the scoring core
+remains independent and no new dependency is adopted before an integration check.
+
+Report proper probability scores for valid distributions with their denominator, plus completion
+and error counts and operational accuracy over all assigned items. Report families separately and
+aggregate with explicit case weights and clustered uncertainty. Never promote a strategy on
+valid-only scores while hiding its failures. Generated trajectories remain hypotheses, not facts.
+
+Evidence: Foresight, ETHOS/ARES and DT-GPT provide non-diagnostic forecasting precedents; AgentRx
+provides a directly relevant comparison of agent configurations and calibration. Their EHR data,
+training and evaluation settings do not validate our case-report benchmark. Code inspection found
+free-text endpoints and early-first cap selection in construction-v1, motivating explicit contracts
+and family allocation. No new implementation, live evaluation or clinical validation accompanies
+this design decision. Earlier decisions otherwise remain in force.
+
+---
+
+## D-20 — Separate forecast policies from brokered execution and durable evidence. **Adopted as design, 2026-10-08; implementation pending**
+
+Santosh requested deeper intelligence on Claude Science and other strong harnesses to inform the
+next-step design. The [science harness investigation](SCIENCE_HARNESS_INTELLIGENCE_2026-10-08.md)
+records primary sources, limitations, and a pinned Prime Agent source inspection. It extends D-19;
+it does not replace construction, target families, the information boundary or exact scoring.
+
+The worker supports direct prediction, repeated-request averaging, a one-action control, and a
+bounded programmatic policy. Separate policy, host capability broker, optional execution runtime,
+and durable event/artifact store. Keep gold outside every solver component. Ordinary tools and
+generated code receive the same capabilities. A Python subprocess is not a security sandbox.
+
+Authorize, meter and record every underlying operation, including unprinted results, nested model
+calls, retries and review. Reserve budget before parallel dispatch. Keep reported facts immutable
+and distinguish references, calculations, hypotheses, review findings and forecast versions.
+Preserve lineage and conflicts without equating citations with entailment. Actual execution records
+take precedence over reconstructed descriptions of work.
+
+Test evidence-integrity review separately from diagnostic critique. Rules check mechanical claims;
+an independent model may flag unsupported interpretations. Neither sees labels. Review-enabled
+strategies have fixed pre-submission schedules and explicit incomplete-review behavior. Late review
+cannot rewrite the scored forecast. Preserve initial predictions for regression analysis.
+
+Recover from durable responses and artifacts rather than silently resampling or assuming live kernel
+state survives. Log uncertain request outcomes and retries. Freeze skills, routing, environments and
+memory policy during evaluation; current-item notes may change, but cross-item learning remains
+outside the primary protocol. Declare capabilities for unattended runs without human approval steps.
+
+Evidence includes Science's documented REPL/MCP bridge, execution history and narrow review contract;
+Kosmos's credential proxy; Prime's runtime protocol and reported refinement exploit; and BixBench3's
+Inspect-based artifact scoring. These support engineering choices, not clinical accuracy claims.
+Inspect remains the outer-runner candidate and the existing client/ledger remain reusable. Define
+interfaces now, implement the simplest baselines first, then compare each addition at declared limits
+and observed cost, completion and per-family probability scores. No model experiment accompanies D-20.

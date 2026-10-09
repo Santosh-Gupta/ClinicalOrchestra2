@@ -1,0 +1,10 @@
+{
+  "case_id": "synthetic-dual-timeline",
+  "case_group": "synthetic-patient-1",
+  "split": "synthetic",
+  "source": {
+    "title": "Invented software test fixture",
+    "synthetic": true
+  },
+  "case_text": "On admission, the patient had fever.\n\nOn day 1, a serum assay was ordered.\n\nOn day 2, the assay was reported negative to the team.\n\nAfter reading the assay result on day 2, the team started supportive treatment.\n\nOn day 5, the team documented improvement after supportive treatment.\n\nOn day 4, family disclosed that symptoms had begun two days before admission."
+}

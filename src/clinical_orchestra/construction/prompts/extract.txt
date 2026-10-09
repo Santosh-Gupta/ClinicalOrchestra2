@@ -1,0 +1,37 @@
+Independently extract the indexed report into two linked chronologies:
+(1) the source-supported physical clinical course, and
+(2) successive information phases available to the treating team.
+Do not generate benchmark questions or consult another extractor's answers.
+
+Record every patient-specific fact with exact supporting quotes and source span IDs.
+The claim must be self-contained and preserve relevant dates, durations, values and units that
+were known at that fact's information phase. A separate clinical_time may locate an event in
+retrospect; do not put retrospective timing into an earlier visible claim. Record later-discovered
+timing as a new fact at its disclosure phase instead.
+Use kind=context for initial/history/examination information, and action, result, diagnosis,
+progression or response for later typed events. The indexed patient is patient_id=patient;
+family history is context about that patient, not another patient's clinical trajectory.
+If multiple patient trajectories cannot be separated, report unresolved and do not merge them.
+
+Create knowledge phases with contiguous ranks starting at zero. Within a phase the source does
+not establish a finer order. The phases must have evidence for chronology; paragraph order alone
+is insufficient. Each fact needs its own known_evidence. If availability is unknown, known_phase
+is null; never assume that all opening-paragraph facts were known on admission.
+
+clinical_time describes when the event physically occurred or the specimen time a finding concerns.
+If not established, use description=unknown and evidence=[]. clinical_after contains only explicitly
+supported earlier fact IDs and need not produce a total order. A history learned on day three
+about pre-admission symptoms is an earlier clinical event but day-three information.
+Availability to the team is a proxy unless actual acknowledgment is documented. Preserve suspected
+beliefs as considered, not confirmed patient facts. Append corrections; never rewrite earlier states.
+
+Distinguish observed, ordered, performed, pending, considered, confirmed, corrected and canceled.
+Link every result to its action and every response to its treatment using linked_action_id.
+For response/progression facts, record an outcome-neutral endpoint such as day 7 or the three-month
+follow-up, with evidence, if stated. Otherwise use null. Improvement after treatment is not proof
+of causation. Do not infer an unreported onset date from the final diagnosis.
+
+Coverage must include every supplied span exactly once: represented with fact_ids, not_patient_information
+with a reason, or unresolved. Do not omit patient information just because it seems unimportant.
+Thesis may contain up to three author claims with evidence and supporting fact IDs; this is hidden
+metadata, not permission to select or invent early clues. List unresolved chronology or source conflicts.

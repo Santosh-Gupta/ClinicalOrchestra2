@@ -1,115 +1,83 @@
 # Clinical Orchestra 2
 
-A benchmark for predicting **what happens next in a clinical case**, and a harness to be built on top
-of it.
+A research benchmark for predicting **what was documented next in a clinical case**.
 
-**Status: the dataset pipeline works end to end on real data. No model has been evaluated yet.**
-There is no evaluation runner and no harness. If you are picking this project up, start with
-[HANDOFF.md](HANDOFF.md).
+The new construction pipeline is implemented and tested with synthetic fixtures. It converts a
+prepared case report into multiple prospective inputs and separately stored answers, while tracking
+both physical clinical timing and what the team knew at each point. **No live constructor comparison
+or model evaluation has been run.** Start with [HANDOFF.md](HANDOFF.md) and the
+[construction guide](docs/CONSTRUCTION_PIPELINE.md).
 
 ## Why this exists
 
-The previous project, [ClinicalOrchestra](https://github.com/Santosh-Gupta/ClinicalOrchestra), built
-a diagnosis benchmark and a retrieval harness, then paused. The write-up is
-[My [failed] Attempt at making a Medical Diagnostic LLM Harness and Benchmark](https://santoshguptaml.substack.com/p/my-failed-attempt-at-making-a-medical).
+The previous [ClinicalOrchestra](https://github.com/Santosh-Gupta/ClinicalOrchestra) project relied on
+LLM-written diagnostic puzzles and noisy free-text judging. The
+[project write-up](https://santoshguptaml.substack.com/p/my-failed-attempt-at-making-a-medical)
+describes those failures. This project anchors answers to reported events and uses fixed candidate
+IDs so evaluation need not repeatedly judge free text. Extracting and auditing the labels still
+requires models; a true quotation alone does not establish that a label is correct or predictable.
 
-Two problems ended it:
+## Construction
 
-1. **The benchmark was built circularly.** An LLM had to turn a case report into a fair,
-   self-contained puzzle and supply the answer, so the quality of the test was capped by the model
-   writing it — a problem when the thing being tested is LLM reasoning.
-2. **The scoring could not be trusted.** Comparing free-text diagnoses needed an LLM judge, and the
-   judge was noisy enough at temperature 0 to produce differences between runs that were not real.
+Two provider families independently extract evidence and linked chronologies. Code renders only
+information available at each cutoff. A separate prefix-only request proposes plausible alternatives;
+a source-aware audit checks support, omissions, chronology and label mapping before export.
 
-Asking what happens *next* addresses both. The correct answer is **extracted from what actually
-happened**, stated in the case report, rather than invented. And many answers can be graded
-mechanically instead of by a judge.
-
-## What the benchmark asks
-
-A case report is split into an ordered timeline of events. Each event past a short warm-up becomes an
-item: the model sees everything up to that point and predicts what comes next. One case yields around
-twenty items.
-
-Events are typed, and scores are always reported **per type**, never pooled:
-
-| Type | The question |
+| Event type | Question |
 | --- | --- |
-| `action` | What should be done next? |
-| `result` | This test was performed — what did it show? |
-| `diagnosis` | What is the diagnosis? |
-| `progression` | What happened to the patient next? |
-| `response` | How did the patient respond to treatment? |
+| `action` | What action or action bundle was next documented? |
+| `result` | What result was reported for an already documented test? |
+| `diagnosis` | What diagnostic assessment or revision was next documented? |
+| `progression` | What change was reported at a specified follow-up? |
+| `response` | What change was reported after a documented treatment at that follow-up? |
 
-`result` is the strongest type. "What did the LP show" has exactly one correct answer recorded in the
-text — it is a fact about the patient, not a choice — so unlike action prediction it has no
-behaviour-cloning ceiling. It also probes diagnostic reasoning without accepting a disease name.
+These are forecasts of a recorded course, not labels for optimal clinical care. Inputs request
+probabilities over frozen candidate IDs, including an `OTHER` option. Outputs retain the source
+answer and supporting evidence. Report eventual forecast scores by event type and cluster statistics
+by case. The probability scorer and evaluation runner remain to be built.
 
-Two rules make the grading defensible, and both are easy to get wrong:
+## Run locally
 
-- **Credit follows information yield, not sequence position.** Case reports are published partly
-  because the workup was circuitous, so rewarding the order a team happened to work in rewards
-  detours. Each event is graded by what its result actually did, which the source states.
-- **Partial credit is later-only, type-matched, and capped.** Naming something already visible scores
-  zero, or the benchmark rewards repeating the prompt. Partial credit requires a type match, or the
-  best strategy is to name the final diagnosis at every decision point.
+Use Python 3.11 from the repository root. These commands need no keys or network:
 
-Every extracted event must quote the source text, and the quote is checked verbatim. An event whose
-quote cannot be found is dropped. That check is what stops this project from repeating v1's failure.
+```bash
+export PYTHONPATH=src
+python3.11 -m unittest discover -s tests
+python3.11 scripts/construct_benchmark.py
+python3.11 scripts/construct_benchmark.py --demo
+```
+
+The default command prints model readiness and a plan. The demo writes eight input/output pairs
+from one **invented software fixture**, across two scripted constructor roles. It tests plumbing,
+not model quality. See the [construction guide](docs/CONSTRUCTION_PIPELINE.md) for the case-record
+format, credentials, provider discovery, live pilots, request limits, logs and response reuse.
+
+The requested constructor pool is configured in [construction_models.toml](construction_models.toml):
+DeepSeek 4.1 Flash (off-peak only), Gemini 3.8 Flash, Muse Spark 1.3, and an unresolved disabled GLM
+slot pending clarification of “glm-3.5 flash.” Public model documentation has been checked; account
+access has not. Missing keys do not prevent setup or synthetic testing.
 
 ## Repository map
 
-| Path | What it is |
+| Path | Purpose |
 | --- | --- |
-| [HANDOFF.md](HANDOFF.md) | **Start here.** Current state, setup, what is not built, gotchas. |
-| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | What has been decided and why (D-01…D-15). |
-| [AGENTS.md](AGENTS.md) | Working rules, each with the v1 failure it came from. |
-| [docs/LESSONS_FROM_V1.md](docs/LESSONS_FROM_V1.md) | What went wrong last time. |
-| [docs/BRAINSTORM_ROUND2.md](docs/BRAINSTORM_ROUND2.md) | The design the code follows, and the proposed harness. |
-| [DESIGN_BRAINSTORM.md](DESIGN_BRAINSTORM.md) | The earlier first pass. Parts were rejected — check the decision registry. |
-| `src/clinical_orchestra/` | The package. |
-| `scripts/` | The pipeline and the operational tools. |
-| `models.toml`, `pricing.toml` | Model registry and API prices, as data. |
-| `data/` | The working corpus: 16 cases, 5 timelines, 99 items. |
+| [HANDOFF.md](HANDOFF.md) | Current state, setup, limitations and next work |
+| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Authoritative decisions, through D-20 |
+| [docs/CONSTRUCTION_PIPELINE.md](docs/CONSTRUCTION_PIPELINE.md) | Current prompts, API workflow and commands |
+| [docs/NEXT_STEP_ARCHITECTURE.md](docs/NEXT_STEP_ARCHITECTURE.md) | Planned next-step evaluation and harness design |
+| [docs/PROJECT_WATCHLIST.md](docs/PROJECT_WATCHLIST.md) | Outside projects to consult when specific design issues arise |
+| [docs/BRAINSTORM_ROUND3.md](docs/BRAINSTORM_ROUND3.md) | Design proposal; implemented subset recorded in D-18 |
+| [AGENTS.md](AGENTS.md) | Working rules and lessons from the predecessor |
+| `src/clinical_orchestra/construction/` | New evidence extraction, compilation, audit and comparison runner |
+| `tests/fixtures/construction/` | Invented source and expected chronologies for software tests |
+| `construction_models.toml`, `.env.construction.example` | Requested constructor pool and blank key configuration |
+| `models.toml`, `pricing.toml` | Older evaluation registry and historical price configuration |
+| `data/` | Original working corpus: 16 cases, 5 timelines, 99 items |
 
-## Quick start
+## Original corpus and pipeline
 
-All four setup steps are required; each has caused a confusing failure at least once.
-
-```bash
-export SSL_CERT_FILE=$(python3.11 -c "import certifi;print(certifi.where())")
-set -a && . /Users/santoshg/Coding/ClinicalHarness/.env.crossmodel.local && set +a
-export PYTHONPATH=src
-python3.11 -m unittest discover -s tests
-```
-
-Then:
-
-```bash
-PYTHONPATH=src python3.11 scripts/fetch_cases.py --from 2026/06/01 --limit 40 --query "neurology" --email santosh.gupta.eng@gmail.com
-```
-
-```bash
-PYTHONPATH=src python3.11 scripts/build_timelines.py --model gemini-3.5-flash --limit 6
-```
-
-```bash
-PYTHONPATH=src python3.11 scripts/build_items.py
-```
-
-Extraction takes 20–30 seconds per case, so run larger batches in the background.
-
-## Current corpus
-
-16 cases published from June 2026 onward, CC-BY or CC0 only, neurology-weighted. 5 extracted
-timelines, 99 items. This is a working sample that proves the pipeline, not a dataset — the fetch
-query matched 4,719 candidates.
-
-Two known problems, both recorded in the data rather than hidden: 27% of action items bundle several
-orders into one event, and item difficulty is not yet calibrated, so many items are probably trivial.
-
-## Costs
-
-A 200-case corpus at 5 samples per item runs from about $2.63 (Muse Spark contributor) to $34
-(Gemini 3.8 Flash). Cost is not the binding constraint on this project; construction difficulty is.
-Run `scripts/estimate_cost.py` for current figures — it prices against the corpus actually on disk.
+The earlier pipeline ran end to end on published cases. Its code and 99 items remain intact for
+reproducibility. The earlier yield-weighted scoring, questions and plans in
+[Round 2](docs/BRAINSTORM_ROUND2.md) are superseded in the new construction path where D-18 specifies.
+The old post-cutoff corpus is not used as development data for the redesign. Its item counts and
+historical cost estimates are not evidence for the new pipeline's yield, quality or cost.

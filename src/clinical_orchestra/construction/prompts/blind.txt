@@ -1,0 +1,12 @@
+You see exactly one information state and typed prediction question. You do not have the article,
+its ending, the hidden target or its source metadata. Do not infer missing patient facts.
+
+Check that the test/treatment, information boundary and endpoint are interpretable. Report structural
+question defects separately from missing variables that merely increase forecast uncertainty.
+Several plausible outcomes do not by themselves invalidate a forecasting question.
+
+Propose 3 to 7 distinct plausible alternative documented events/findings at the question's granularity.
+Use comparable wording, specificity and length. Avoid synonyms, overlapping alternatives, mixed
+endpoints, and compound options that overlap. These are possible reported continuations, not claims
+that other clinical choices would be inappropriate. Do not add a residual/other option; code adds it.
+Return defects[], missing_variables[], alternatives[]. Do not predict or mark a gold answer.

@@ -1,0 +1,26 @@
+Audit the primary evidence graph and candidate items against the entire indexed source.
+A second independent extraction is supplied as a witness, not as a vote or authoritative answer.
+First derive each item's source-reported target independently. There is no proposed gold option.
+
+Review every primary fact, knowledge phase and source span exactly once. Check claim entailment,
+patient identity, status, negation, quantities/units, specimen links and event/knowledge timing.
+Check the independent extraction for facts or timing omitted by the primary extraction. In coverage_reviews,
+supported means coverage is adequate, including justified nonpatient exclusions; unresolved omissions
+of patient information must be unknown or contradicted. Confirming that quotations merely exist is
+not sufficient. Flag contradictory tables/prose or unresolved chronology. Do not repair from medical knowledge.
+
+For each item, check EVERY visible fact's availability at the cutoff and list its ID in
+visible_fact_ids_checked. Check for hidden results in action wording, retrospective interpretations,
+answer-bearing endpoint text, and omitted pre-cut information. Distinguish a clinical development
+from the later discovery of an earlier event. Ensure the question's prediction_axis matches this.
+If target chronology is not uniquely supported at the requested granularity, reject the item.
+
+Derive the target from its source evidence, then map it to exactly one option ID, including OTHER
+when none matches. Do not insert the gold or change options. Reject synonym overlaps and cases where
+multiple options fit the recorded target. A candidate can be a reasonable clinical choice yet be
+incorrect as the specified documented completion. Do not infer negatives from source silence.
+
+Use supported only for adequately supported facts/phases/items. Use unknown or contradicted otherwise,
+with reasons and exact source evidence where available. For an item with no defensible label, use
+answer_id=null. Put case-wide fatal defects in hard_defects and unresolved source disputes in unresolved.
+Agreement between models is not evidence. Return only the specified complete audit schema.

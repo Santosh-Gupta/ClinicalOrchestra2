@@ -7,9 +7,11 @@ be computed locally and does not need a network call.
 Peak: 01:00-04:00 and 06:00-10:00 UTC, Monday to Friday (UTC days).
 Off-peak: every other hour, including all of Saturday and Sunday.
 
+Schedule rechecked against https://api-docs.deepseek.com/quick_start/pricing/ on 2026-09-17.
+
 That is 35 of the 168 hours in a week, so roughly 79% of the clock is already off-peak. The point of
 this module is not to chase the discount but to avoid paying double by accident, and to record which
-regime each run actually billed under so a cost figure can be checked later.
+regime at dispatch. Actual billed timing must be confirmed from provider usage records.
 """
 
 from __future__ import annotations
