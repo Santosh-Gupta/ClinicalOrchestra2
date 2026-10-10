@@ -1,5 +1,15 @@
 # Handoff — Clinical Orchestra 2
 
+**Prediction-target catalog, 2026-10-10:** Santosh asked for the widest useful inventory of what
+a case report might support beyond diagnosis. The [catalog](docs/PREDICTION_TARGET_CATALOG_2026-10-10.md)
+uses the CARE checklist, surgical reporting, FHIR workflow distinctions and EHR prediction tasks as
+coverage guides. It lists clinical developments, later discoveries, diagnostic actions and results,
+assessments, management, delivery, responses, complications, care transitions and patient choices.
+The five adopted task families are unchanged. A possible later-disclosed-information family is a
+**proposal**, pending a development-only coverage audit. This is documentation and research, not a
+new implemented miner or validated item count. Do not use the 99 historical post-cutoff items to
+choose the taxonomy.
+
 **Harness engineering update, 2026-10-10:** read the
 [general harness review](docs/GENERAL_HARNESS_ENGINEERING_2026-10-10.md), **D-21**, and the
 [architecture](docs/NEXT_STEP_ARCHITECTURE.md) before implementation. Recent controlled medical and

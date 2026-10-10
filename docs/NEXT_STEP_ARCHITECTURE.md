@@ -10,6 +10,8 @@ The [science harness investigation](SCIENCE_HARNESS_INTELLIGENCE_2026-10-08.md) 
 
 The [general harness-engineering review](GENERAL_HARNESS_ENGINEERING_2026-10-10.md) compares controlled medical and general harness studies, simple-agent counterexamples, infrastructure effects and evaluation defects. D-21 requires a common, failure-complete measurement layer and matched development comparisons before promoting an enhancement. A policy that is more elaborate is not presumed more accurate.
 
+The [prediction-target catalog](PREDICTION_TARGET_CATALOG_2026-10-10.md) inventories possible subtypes from case-report checklists and clinical data conventions. It is a discovery aid, not an expansion of the five adopted families. It identifies one possible gap: a fact that already existed physically but was only **discovered later** through history or examination may be neither progression nor the result of a known test. Count such candidates on development cases before considering a separate information-discovery family or a schema change.
+
 ## Task families
 
 Retain the five event types from construction-v1. Introduce subtypes for reporting and eligibility, without creating a separate agent for each subtype.

@@ -65,6 +65,7 @@ access has not. Missing keys do not prevent setup or synthetic testing.
 | [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Authoritative decisions, through D-21 |
 | [docs/CONSTRUCTION_PIPELINE.md](docs/CONSTRUCTION_PIPELINE.md) | Current prompts, API workflow and commands |
 | [docs/NEXT_STEP_ARCHITECTURE.md](docs/NEXT_STEP_ARCHITECTURE.md) | Planned next-step evaluation and harness design |
+| [docs/PREDICTION_TARGET_CATALOG_2026-10-10.md](docs/PREDICTION_TARGET_CATALOG_2026-10-10.md) | Candidate things to forecast from case reports and eligibility tiers |
 | [docs/GENERAL_HARNESS_ENGINEERING_2026-10-10.md](docs/GENERAL_HARNESS_ENGINEERING_2026-10-10.md) | Controlled harness evidence, experiment controls and build gates |
 | [docs/PROJECT_WATCHLIST.md](docs/PROJECT_WATCHLIST.md) | Outside projects to consult when specific design issues arise |
 | [docs/BRAINSTORM_ROUND3.md](docs/BRAINSTORM_ROUND3.md) | Design proposal; implemented subset recorded in D-18 |
