@@ -1,5 +1,18 @@
 # Handoff — Clinical Orchestra 2
 
+**Dataset sourcing update, 2026-10-10:** read the
+[dated model and journal review](docs/DATASET_SOURCING_2026-10-10.md) and **D-22** before fetching
+more cases. It verifies current direct-API model IDs, public standard prices and disclosed knowledge
+cutoffs, and names a prespecified case-report journal discovery cohort. The old NeurologyBM registry
+is not a vetted allowlist; PLOS ONE currently excludes clinical case reports. Even established
+open-access case journals mix CC BY with licenses that do not permit this default public dataset.
+Check every article's actual license, first public version date, corrections and chronology. The
+fetcher now saves its already parsed journal and PMID, but still uses the old broad PMC search;
+journal filtering and first-online/preprint date capture are pending. No new cases, paid calls or
+model comparisons were made. For the cheapest pilot within the **existing configured pool**, use
+off-peak DeepSeek Flash plus Gemini 3.8 Flash on a prespecified development case after access
+checks. Do not silently substitute GLM-5.3-Flash for the unresolved requested name.
+
 **Prediction-target catalog, 2026-10-10:** Santosh asked for the widest useful inventory of what
 a case report might support beyond diagnosis. The [catalog](docs/PREDICTION_TARGET_CATALOG_2026-10-10.md)
 uses the CARE checklist, surgical reporting, FHIR workflow distinctions and EHR prediction tasks as

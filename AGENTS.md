@@ -8,7 +8,7 @@ changing anything.
 1. **[HANDOFF.md](HANDOFF.md)** — current state, environment setup, what is not built yet, and the
    gotchas that cost real debugging time. Start here.
 2. **[docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md)** — what has been decided and why, D-01
-   through D-21. Most of the code looks like it has removable complexity until you read the decision
+   through D-22. Most of the code looks like it has removable complexity until you read the decision
    that forced it.
 3. **[docs/LESSONS_FROM_V1.md](docs/LESSONS_FROM_V1.md)** — the mistakes this project exists to avoid.
    Most of the rules below look removable until you read why they're here.
@@ -22,7 +22,10 @@ changing anything.
    runtime, broker, evidence review and recovery choices added in D-20. The
    [general harness review](docs/GENERAL_HARNESS_ENGINEERING_2026-10-10.md) explains D-21's matched
    comparisons, attempt accounting and implementation gates.
-6. **[DESIGN_BRAINSTORM.md](DESIGN_BRAINSTORM.md)** — the earlier first-pass design, kept for
+6. **[docs/DATASET_SOURCING_2026-10-10.md](docs/DATASET_SOURCING_2026-10-10.md)** — the D-22
+   journal discovery cohort, article-level rights gate, current model cost/cutoff snapshot and
+   prespecified intake plan. The broad journal filter is still to be implemented.
+7. **[DESIGN_BRAINSTORM.md](DESIGN_BRAINSTORM.md)** — the earlier first-pass design, kept for
    comparison. Parts of it were explicitly rejected (see D-05 and D-08). Do not implement from this
    file without checking the decision registry first.
 

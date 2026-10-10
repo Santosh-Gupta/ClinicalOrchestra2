@@ -498,3 +498,35 @@ broker and evidence model.
 Implementation begins with contracts/fixtures and framework-independent deterministic scoring,
 then the durable direct worker and isolation broker. No code, paid model calls, real constructor
 comparison, evaluation result or clinical validation accompanies D-21.
+
+---
+
+## D-22 — Prespecify journal discovery and verify each article before construction. **Adopted as dataset intake design, 2026-10-10; filtering implementation pending**
+
+The old project preserved PMC provenance and article-level license distinctions, but its broad
+journal registry is not a current quality allowlist. The current fetcher searches all PMC open-access
+case reports; that search alone admits outlets whose editorial process has not been checked. The
+[dated sourcing review](DATASET_SOURCING_2026-10-10.md) records a narrower discovery cohort and
+current provider pricing/cutoffs. PLOS ONE is explicitly excluded because it does not accept
+clinical case reports under its current criteria. A journal's open-access label also does not settle
+reuse: several established case-report journals offer CC BY alongside CC BY-NC or CC BY-NC-ND.
+
+For the next intake version, declare eligible journals, journal strata, time window and sampling
+rule before seeing model results. Keep a full candidate/rejection ledger. Admit each article only
+after checking actual case-report content, article-level license, first public version date,
+corrections/retractions, patient/report duplication and chronological completeness. Preserve exact
+publisher, NLM and PMC identifiers, dates, license evidence and retrieval time. An absent or
+conflicting license or unknown first-public date must not silently pass the public post-cutoff gate.
+Published case outcomes remain observations, not optimal-care labels. Do not select a reference set
+by model failure or perceived surprise. Preserve journal and family denominators and cluster
+statistics by case.
+
+Training-cutoff dates are model-specific. OpenAI, Anthropic and Google disclose different cutoffs;
+several other current vendors do not disclose a model-specific date. The earliest public version
+must postdate the solver's documented cutoff plus a prespecified buffer to qualify for the stronger
+temporal subset. This reduces contamination risk; it cannot prove the model never saw the case.
+Unknown cutoffs remain unknown, and moving model aliases require resolved-version logging.
+
+The existing construction prompts, model pool and 99 historical items are unchanged. The fetcher
+now retains its already parsed journal and PMID in new case records; prespecified journal filtering,
+full publication-date capture and live constructor comparisons are still pending.

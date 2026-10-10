@@ -114,8 +114,10 @@ def main() -> int:
             "case_id": article.pmcid,
             "source": {
                 "pmcid": article.pmcid,
+                "pmid": article.pmid,
                 "doi": article.doi,
                 "title": article.title,
+                "journal": article.journal,
                 "license": article.license_type,
                 "license_code": licence_code,
                 "publication_year": article.publication_year,
