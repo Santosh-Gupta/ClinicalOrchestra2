@@ -1,12 +1,14 @@
 # Architecture for the clinical next-step benchmark and harness
 
-Design baseline: 8 October 2026, D-19/D-20. Implementation pending. This document extends the direction already adopted in D-17/D-18; it does not describe new code as complete.
+Design baseline: 10 October 2026, D-19/D-20/D-21. Implementation pending. This document extends the direction already adopted in D-17/D-18; it does not describe new code as complete.
 
 Clinical Orchestra turns supported portions of published case reports into forecasts about the next documented action, finding, assessment, clinical development, or treatment-associated response. A case may contribute several different tasks or none. The inference harness must handle all these targets without treating every question as a diagnosis problem.
 
 The existing [construction pipeline](CONSTRUCTION_PIPELINE.md) supplies the starting implementation. The [broad harness review](HARNESS_LITERATURE_REVIEW_2026-10-04.md) and [focused forecasting review](NEXT_STEP_FORECASTING_LITERATURE.md) provide evidence and limitations. This design does not require training an EHR foundation model or creating a simulated patient.
 
 The [science harness investigation](SCIENCE_HARNESS_INTELLIGENCE_2026-10-08.md) adds detailed Claude Science documentation, a pinned Prime Agent source inspection, and comparisons with Kosmos, PaperQA3 and scientific evaluation systems. D-20 makes programmatic execution, durable evidence and narrow review explicit interfaces. The one-action policy below remains the first enhanced control, rather than a limit on what the architecture can express.
+
+The [general harness-engineering review](GENERAL_HARNESS_ENGINEERING_2026-10-10.md) compares controlled medical and general harness studies, simple-agent counterexamples, infrastructure effects and evaluation defects. D-21 requires a common, failure-complete measurement layer and matched development comparisons before promoting an enhancement. A policy that is more elaborate is not presumed more accurate.
 
 ## Task families
 
@@ -217,6 +219,8 @@ Track wrong-to-right and right-to-wrong changes from the initial forecast and pr
 
 Every transport attempt, raw response, tool request, output, retry, failure, and observed usage is saved before derivation. Missing usage is unknown, not zero. A model failure may produce an explicit unsuccessful outcome without removing the item from the manifest; integrity failures such as manifest mismatch or leaked targets stop the run. Mechanical replay of saved outputs must reproduce scores.
 
+D-21 adds an attempt state machine to make these rules testable: `assigned`, `request_prepared`, `dispatched`, `response_saved`, `parsed`, `submitted`, `scored`, or an explicit terminal failure. Save the actual rendered provider messages, tool schemas, executed tool arguments/results and content digests; prompt templates alone do not establish the worker's information state. A dispatched request whose result is not saved has an unknown provider outcome. A retry is a new recorded attempt with possible additional cost. Define one final submission channel; keep nonconforming answers in raw records and report them as submission failures in the primary analysis. Provider preflight happens before scored assignment. Report completion and failure classes beside valid-only probability scores and operational accuracy on all assigned items.
+
 ## Implementation map
 
 Proposed modules below are not yet created.
@@ -239,13 +243,19 @@ D-20 adds proposed `harness/broker.py`, `harness/artifacts.py`, `harness/review.
 
 **First, freeze contracts and fixtures.** Create clearly synthetic examples covering all five families, delayed disclosure of an earlier physical event, announced versus unannounced actions, simultaneous bundles, missing follow-up, and a known treatment without a reported response. Expected accept/reject reasons must be explicit. A future-named test and an outcome-named endpoint must fail.
 
+Also include sentinel fixtures that prove the forbidden source location and attempted tool route were exercised before asserting no target leaked. This avoids a passing isolation test whose attempted delivery never occurred.
+
 **Second, build the deterministic evaluation core.** Hand-computed probability examples, malformed outputs, zero probabilities, duplicate IDs, timeouts, identical-output replay, and case-weighted aggregation verify the metric and denominator rules. This work needs no credentials and does not establish clinical validity.
+
+Build a durable direct-worker attempt journal next. Fake-provider tests cover response persistence before parsing, ambiguous timeouts, retries, invalid submissions, requested versus actual model identity, full assigned denominators and mechanical replay. The journal, strict scorer and worker boundary must function without an optional outer framework.
 
 **Third, extend construction in a new version.** Add contracts and audits without rewriting old exports. Run the existing offline demo plus the new fixtures. Confirm no target, hidden timing detail, source title, or audit material appears in public exports. Retain all exclusion reasons and family counts.
 
 **Fourth, run the small real development pilot when models are available.** Evaluate coverage, endpoint support, unsupported assumptions, OTHER frequency, and constructor/reviewer configuration. An empty family is evidence about the source material, not a reason to invent labels. Do not expand the corpus or choose harness prompts using the existing test-only cases.
 
 **Fifth, compare direct and repeated-request baselines.** Then add structured notes, retrieval, and programmatic orchestration one at a time under declared budgets. Compare one-action and programmatic policies with the same capabilities and evidence access; report observed cost and latency as well as fixed limits. Add evidence review separately and delegation only for a concrete subtask. Verify isolation with sentinel hidden data and adversarial requests. Repeat promising comparisons across provider families; a stronger reviewer makes the result a mixed-model system, not the tested base model alone.
+
+For each new mechanism, use the same scored cases, model, actual runtime, output contract and scorer as its control, and verify that the mechanism actually ran. Predeclare the main family/metric and a practical budget on development data. Report the number of policy variants tried, paired case-level uncertainty, completion and error rates; a matched repeated-request control accounts for extra inference. If an enhancement's benefit is unresolved or its completion regresses materially, keep it exploratory. Do not use untouched cases to select prompts or thresholds.
 
 **Finally, freeze a confirmatory run.** Select policies on development data, declare metrics and budgets, and only then evaluate untouched cases. A sequential memory track, continuous trajectories, alternative interventions, or best-care recommendations require their own task contracts and validation.
 

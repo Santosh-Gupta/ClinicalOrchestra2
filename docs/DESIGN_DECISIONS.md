@@ -425,6 +425,8 @@ this design decision. Earlier decisions otherwise remain in force.
 
 ## D-20 — Separate forecast policies from brokered execution and durable evidence. **Adopted as design, 2026-10-08; implementation pending**
 
+**Extended by D-21** for controlled harness comparisons, attempt-level outcomes and implementation gates.
+
 Santosh requested deeper intelligence on Claude Science and other strong harnesses to inform the
 next-step design. The [science harness investigation](SCIENCE_HARNESS_INTELLIGENCE_2026-10-08.md)
 records primary sources, limitations, and a pinned Prime Agent source inspection. It extends D-19;
@@ -457,3 +459,42 @@ Inspect-based artifact scoring. These support engineering choices, not clinical 
 Inspect remains the outer-runner candidate and the existing client/ledger remain reusable. Define
 interfaces now, implement the simplest baselines first, then compare each addition at declared limits
 and observed cost, completion and per-family probability scores. No model experiment accompanies D-20.
+
+---
+
+## D-21 — Make harness additions earn their place under matched, failure-complete evaluation. **Adopted as design, 2026-10-10; implementation pending**
+
+Santosh requested a further general harness-engineering investigation before development. The
+[review](GENERAL_HARNESS_ENGINEERING_2026-10-10.md) records recent controlled medical and general
+comparisons, counterevidence to elaborate agents, infrastructure effects, harness-selection bias,
+and evaluation-harness defects. These sources do not establish that any agent policy will improve
+clinical next-event forecasts.
+
+Treat input isolation, immutable assigned tasks, durable attempts, an input-only worker, host-enforced
+budgets, failure accounting and a deterministic scorer as the shared measurement instrument. Treat
+planning, retrieval, review, compaction, programmatic execution, delegation and model routing as
+separate forecast policies. Start with direct prediction and a fixed repeated-request probability
+average. Keep the same frozen items, information access, provider identity, runtime, output contract
+and scorer in paired policy comparisons. Record actual rendered model context and executed tool
+arguments/results, not just intended templates and calls.
+
+Build an attempt state machine: assignment precedes dispatch; raw response persistence precedes
+parsing; the final submission channel and error categories are explicit. A request with unknown
+provider outcome is not a cost-free retry. Failures after assignment stay in the operational
+denominator. Report completion, failure classes and valid-only probability scores with their
+denominators, plus operational accuracy across all assigned items. A leakage or scorer-integrity
+failure stops the run. Test that each negative control actually exercises the route it purports to
+protect. Mechanical replay must reproduce scores.
+
+Choose prompts and policies on development cases, compare extra mechanisms with a matched
+extra-inference baseline, disclose the number of variants tried, and confirm on untouched case
+clusters. Report family-specific paired uncertainty and cost/latency, including provider and
+model–harness interactions. Add context management only if it solves a measured overflow or evidence
+management problem; add nested execution, review or delegation only after their narrower controls
+are understood. Use one common-protocol model comparison and separately label any model-specific
+prompt/tool adaptations chosen on development data. Preserve D-19's task contracts and D-20's
+broker and evidence model.
+
+Implementation begins with contracts/fixtures and framework-independent deterministic scoring,
+then the durable direct worker and isolation broker. No code, paid model calls, real constructor
+comparison, evaluation result or clinical validation accompanies D-21.

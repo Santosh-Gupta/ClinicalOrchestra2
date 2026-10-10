@@ -1,5 +1,17 @@
 # Handoff — Clinical Orchestra 2
 
+**Harness engineering update, 2026-10-10:** read the
+[general harness review](docs/GENERAL_HARNESS_ENGINEERING_2026-10-10.md), **D-21**, and the
+[architecture](docs/NEXT_STEP_ARCHITECTURE.md) before implementation. Recent controlled medical and
+general comparisons show model–harness interactions, answer-delivery effects and no dependable gain
+from added orchestration for strong models in some tasks. Build the shared measurement instrument
+first: frozen input-only contracts, deterministic scorer, attempt journal, actual rendered-context
+records, full assigned-item failure accounting and isolation tests. Then compare a direct forecast
+with fixed repeated-request averaging; add tools, context management, review or programmatic
+execution only as separately measured policies. This update is research and design only: no runner,
+scorer, paid call or clinical validity estimate was added. The first coding step is still contracts
+and deterministic scoring. Keep `HANDOFF.md` current when implementation begins.
+
 **Project reference update, 2026-10-09:** [PROJECT_WATCHLIST.md](docs/PROJECT_WATCHLIST.md)
 maps likely implementation problems to outside projects, including the closely related ClinicBench
 next-action forecast. Recheck current source and task assumptions before borrowing a method. This is
@@ -67,15 +79,16 @@ Full commands are in the pipeline guide. Python 3.11 is required; HTTPS still ne
 setup below. Tests and demo do not need keys or network. DeepSeek defers with exit 75 during peak
 windows or near their start; rerun later with the same cache. No background task is scheduled.
 
-**Next work:** resolve the GLM name; add keys; discover account model IDs; run a small development
-comparison and inspect rejection reasons, source coverage, OTHER frequency and exported pairs.
-Only then freeze prompts and develop the evaluation runner, proper probability scoring and difficulty
-experiments. Do not tune on the existing 99 post-cutoff items or replace a reference set with cases
+**Next work:** deterministic contracts, probability scoring and attempt recording can proceed offline
+now. In parallel, resolve the GLM name, add keys, discover account model IDs and run a small
+construction comparison on declared development cases. Inspect rejection reasons, source coverage,
+OTHER frequency and exported pairs before freezing construction prompts or running a real solver
+comparison. Do not tune on the existing 99 post-cutoff items or replace a reference set with cases
 selected by model failures/disagreement. Keep statistics clustered by case.
 
-The original pipeline/data and `models.toml` are unchanged. New source and documentation changes
-are local and uncommitted. The shared chat client now supports attempt guards and raw response
-observers, needed to enforce budgets and preserve failed calls. The older decisions and snapshot
+The original pipeline/data and `models.toml` are unchanged. Construction-v1 source changes were
+committed previously; D-19 through D-21 remain design work. The shared chat client supports attempt
+guards and raw response observers, needed to enforce budgets and preserve failed calls. The older decisions and snapshot
 below are historical wherever D-18 or this update supersedes them.
 
 ---
