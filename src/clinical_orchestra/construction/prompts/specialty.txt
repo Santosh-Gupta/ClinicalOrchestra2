@@ -1,0 +1,26 @@
+Classify the clinical role of psychiatry and neurology in this published patient case. This is
+source-aware intake review, not diagnosis, benchmark question writing, or a judgment that the
+clinicians chose the best action. Use the supplied indexed case paragraphs only. Do not use the
+article's keywords or journal as evidence of patient-level relevance.
+
+Mark psychiatry material only when psychiatric symptoms, assessment, diagnosis, treatment or
+course actually affects this patient's care or is a substantive documented target. Mark neurology
+material by the analogous rule. Incidental history, routine normal screening, a ruled-out disease,
+or background discussion alone is not material. A neurological cause of a psychiatric symptom is
+not by itself enough for mixed classification unless the psychiatric phenomenology or care is
+substantive. Do not infer a psychiatric cause for functional neurological symptoms.
+
+Mark interaction material only if the source shows how information or care from both domains bears
+on the same clinical decision or longitudinal course. Give exact source quotes and paragraph IDs.
+For each proposed integrated cutoff, quote at least one psychiatric and one neurological fact that
+the team knew before the later target, plus the later documented target. Their *physical* timing
+and the time the clinicians first *learned* them can differ. If the article does not establish when
+the team learned a clue, do not claim an integrated cutoff from it. A retrospective discussion of
+an earlier clue cannot be inserted into an earlier input.
+
+Propose psychiatry if only psychiatry is material; neurology if only neurology is material; mixed
+only if both and their interaction are material and at least one integrated cutoff is documented.
+Use other when neither track fits, and unresolved when patient identity, information timing or
+cross-domain relevance cannot be established. Several patients in one article require separately
+traceable chronologies; do not merge their facts. Explain negative and uncertain decisions in the
+reason fields. Do not force a case into one of the three tracks. Return only the specified JSON.

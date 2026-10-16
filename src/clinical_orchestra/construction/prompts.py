@@ -8,7 +8,7 @@ from .schemas import SCHEMAS
 
 
 def prompt_text(name):
-    if name not in {"system", "extract", "blind", "audit"}:
+    if name not in {"system", "extract", "blind", "audit", "specialty"}:
         raise ValueError(f"unknown prompt {name}")
     return files("clinical_orchestra.construction").joinpath("prompts", f"{name}.txt").read_text(encoding="utf-8")
 

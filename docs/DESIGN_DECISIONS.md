@@ -530,3 +530,33 @@ Unknown cutoffs remain unknown, and moving model aliases require resolved-versio
 The existing construction prompts, model pool and 99 historical items are unchanged. The fetcher
 now retains its already parsed journal and PMID in new case records; prespecified journal filtering,
 full publication-date capture and live constructor comparisons are still pending.
+
+---
+
+## D-23 — Build three exclusive psychiatry/neurology tracks with an enriched intersection. **Adopted as discovery design, 2026-10-16; clinical labeling pending**
+
+Santosh requested pure psychiatry, pure neurology and mixed neuropsychiatric next-step benchmarks,
+with an effort to find many mixed cases. Treat them as three separately scored tracks under D-18/19's
+shared item and harness protocol. Assign each patient/report cluster to at most one track. The pure
+tracks require material clinical work in their own specialty and no material work in the other.
+The mixed track requires both domains to affect the case, and its headline items require
+source-backed psychiatric and neurological information already available at the cutoff plus a
+target linked to both. A paper with both words, a routine rule-out test, or only a retrospective
+discussion does not qualify. Unresolved cases stay outside headline sets.
+
+Prespecify a narrow journal/date frame and independent specialty reviews before seeing solver
+behavior. Keep a hash-sampled frame reference slice for prevalence within the retrieved search
+frame and separately report specialty-enriched and mixed-enriched routes. Search all mixed-route
+hits within the frame;
+do not cap them by perceived interest. D-22's article-level rights, first-public-date, quality,
+duplication and chronology gates still apply. Do not assign final specialty or temporal test status
+from title, search query, JATS type, publication year or a single LLM. Mixed difficulty is a
+hypothesis to test on frozen, family-matched items with case-clustered uncertainty, not an inclusion
+criterion. The [track contract and search plan](PSYCHIATRY_NEUROLOGY_BENCHMARKS.md) give the exact
+rules and sources.
+
+The deterministic discovery script and 2026-10-16 candidate ledger implement the retrieval stage.
+A strict two-family specialty-review prompt and runner are implemented for prepared development
+cases, but no live review, independent chronology audit, accepted case assignment, real input/output
+pair, solver run or difficulty result accompanies this decision. The prior 99 post-cutoff items
+remain untouched.

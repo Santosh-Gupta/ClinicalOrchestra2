@@ -30,6 +30,7 @@ class PmcArticle:
     license_type: str | None
     url: str
     sections: tuple[PmcSection, ...]
+    article_type: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         value = asdict(self)
@@ -43,6 +44,7 @@ def search_pmcids(
     *,
     limit: int = 20,
     sort: str = "relevance",
+    retstart: int = 0,
 ) -> tuple[list[str], int, str | None]:
     """Search PMC and return PMCIDs, total count, and translated query."""
 
@@ -52,6 +54,7 @@ def search_pmcids(
             "db": "pmc",
             "retmode": "json",
             "retmax": limit,
+            "retstart": retstart,
             "sort": sort,
             "term": query,
         },
@@ -122,6 +125,7 @@ def parse_pmc_xml(xml_text: str) -> list[PmcArticle]:
                 license_type=_license_type(article),
                 url=f"https://pmc.ncbi.nlm.nih.gov/articles/{pmcid}/",
                 sections=tuple(_sections(article)),
+                article_type=article.attrib.get("article-type"),
             )
         )
     return articles

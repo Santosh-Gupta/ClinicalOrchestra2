@@ -60,6 +60,11 @@ The actual versioned prompts are in
 - `blind.txt`: one prospective input, structural defects, missing variables, plausible alternatives.
 - `audit.txt`: full-source entailment, omissions, chronology, leakage and frozen-option mapping.
 
+The separate psychiatry/neurology intake path adds `specialty.txt` and
+[`review_specialty_cases.py`](../scripts/review_specialty_cases.py) for provisional two-family
+case classification. It does not run inside `construct_benchmark.py` or alter the existing
+construction-v1 prompt hashes. See [the specialty track contract](PSYCHIATRY_NEUROLOGY_BENCHMARKS.md).
+
 [`schemas.py`](../src/clinical_orchestra/construction/schemas.py) defines strict JSON contracts.
 The request contains its complete schema; APIs are asked for JSON objects and local code enforces
 the contract. Native provider JSON-schema enforcement is not assumed. Unknown fields, missing

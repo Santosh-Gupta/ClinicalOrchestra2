@@ -1,5 +1,28 @@
 # Handoff — Clinical Orchestra 2
 
+**Three specialty tracks, 2026-10-16:** Santosh requested separate pure psychiatry, pure neurology
+and integrated neuropsychiatric next-step benchmarks, with many mixed candidates. Read
+[the track contract](docs/PSYCHIATRY_NEUROLOGY_BENCHMARKS.md) and **D-23** before sourcing or
+labeling. A new deterministic [discovery script](scripts/discover_specialty_cases.py) searched a
+predeclared nine-journal frame in 2024–2025 development and July–October 2026 temporal-candidate
+windows, retaining complete search hits, translated queries and a rights/type rejection ledger in
+[`data/discovery/specialty_candidates_2026-10-16.json`](data/discovery/specialty_candidates_2026-10-16.json).
+It selected 758 unique records, including 247 from mixed routes. Of those mixed-route records,
+71 passed the **preliminary JATS license and article-type screen**; they are not yet verified mixed
+cases. The full selected pool has 179 preliminary case candidates. PMC translated the historical “case
+reports” publication-type query to all-fields matching, admitting many reviews; the script records
+JATS article type and excludes obvious non-case types. Its `frame_reference` route is the only
+within-frame prevalence sample; specialty and mixed routes are enriched. A versioned specialty
+review prompt/JSON contract, mechanical evidence checks and
+[`scripts/review_specialty_cases.py`](scripts/review_specialty_cases.py) are ready for a two-family
+development pilot. Local credential checks found only Gemini 3.8 Flash ready among the requested
+construction pool, so the required independent second family is not available; no paid calls were
+made. No publisher/first-public-date checks, clinical labels, constructed inputs/outputs or solver
+scores have been produced for these tracks. Next: audit a small development sample with two
+independent provider families; implement the integrated-item gate; verify first public dates before
+assigning any temporal test cases. Do not call the candidate
+counts benchmark sizes or tune on the 99 historical post-cutoff items.
+
 **Dataset sourcing update, 2026-10-10:** read the
 [dated model and journal review](docs/DATASET_SOURCING_2026-10-10.md) and **D-22** before fetching
 more cases. It verifies current direct-API model IDs, public standard prices and disclosed knowledge

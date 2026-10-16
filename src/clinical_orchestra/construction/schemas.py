@@ -48,7 +48,20 @@ AUDIT = obj(
                          defects=STRINGS, reason=TEXT)),
     hard_defects=STRINGS, unresolved=STRINGS,
 )
-SCHEMAS = {"extract": EXTRACT, "blind": BLIND, "audit": AUDIT}
+SPECIALTY = obj(
+    patient_scope=enum("single", "separable_multiple", "inseparable_multiple", "unclear"),
+    psychiatry=obj(material={"type": "boolean"}, evidence=EVIDENCE, reason=TEXT),
+    neurology=obj(material={"type": "boolean"}, evidence=EVIDENCE, reason=TEXT),
+    interaction=obj(material={"type": "boolean"},
+                    mechanism=enum("diagnostic", "management", "longitudinal", "outcome", "none", "unclear"),
+                    evidence=EVIDENCE, reason=TEXT),
+    integrated_cutoffs=arr(obj(psychiatric_pre_cutoff=EVIDENCE,
+                               neurological_pre_cutoff=EVIDENCE,
+                               later_target=EVIDENCE, reason=TEXT), maximum=20),
+    proposed_track=enum("psychiatry", "neurology", "mixed", "other", "unresolved"),
+    unresolved=STRINGS,
+)
+SCHEMAS = {"extract": EXTRACT, "blind": BLIND, "audit": AUDIT, "specialty": SPECIALTY}
 
 
 class ContractError(ValueError):

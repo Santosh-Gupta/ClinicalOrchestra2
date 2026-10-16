@@ -106,3 +106,20 @@ malformed response retention, cache tampering, source/test split gates, request 
 boundaries and retry guards. A response-log write failure stops without sending the request again.
 The compiler ending-invariance test does not establish full-source LLM extraction invariance.
 No paid inference, real label quality estimate or constructor ranking was obtained.
+
+---
+
+## 2026-10-16 — PMC case-report query is a recall hint, not an article-type gate
+
+The [specialty discovery ledger](data/discovery/specialty_candidates_2026-10-16.json) shows that
+PMC translated `"case reports"[Publication Type]` to `"case reports"[All Fields]` in all ten
+routes. One retrieved example was [PMC13664290](https://pmc.ncbi.nlm.nih.gov/articles/PMC13664290/),
+tagged `systematic-review` in JATS. The query can therefore return non-case articles even when the
+term looks like a fielded publication-type filter. The candidate script retains the query
+translation, JATS type and rejection status rather than treating search hits as case reports.
+
+The two mixed search routes selected 247 unique records in the nine-journal frame. JATS license
+and article-type screens leave 71 for article and clinical review, plus 25 whose case type is
+unverified. Neither count is a mixed-case count: terms may occur only in backgrounds, and
+psychiatric and neurological facts must be material at a prospective cutoff before an item can
+enter the integrated track. No model or clinician has audited these records yet.
