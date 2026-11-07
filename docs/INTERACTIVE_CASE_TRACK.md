@@ -1,7 +1,9 @@
 # Interactive case-report track
 
-Design adopted 7 November 2026 in D-24. **No interactive cases, gatekeeper, solver runs or scores
-exist yet.** This is a separate experimental benchmark track, not another score for the fixed-prefix
+Design adopted 7 November 2026 in D-24. An offline pack validator and observed-only request
+resolver are implemented in [`interactive.py`](../src/clinical_orchestra/interactive.py), with
+negative-control software tests. **No accepted interactive cases, isolated runner, solver runs or
+scores exist yet.** This is a separate experimental benchmark track, not another score for the fixed-prefix
 items. It can use the same eligible, article-licensed case pool and the same psychiatry, neurology
 and integrated neuropsychiatry assignments, but requires its own case-level inclusion audit.
 
@@ -61,6 +63,13 @@ Do not let a model fill `not_documented` with a plausible value. A test may be r
 but the host returns the same frozen response, counts every request, and records the repeated call.
 The agent can reason about uncertainty; the broker cannot manufacture information to keep a
 conversation moving.
+
+The current Python resolver is a **host-side component**, not an isolation mechanism. A solver
+running in the same process with access to its `CasePack` could inspect hidden cards and gold.
+The future worker must put the pack in a separate host process or inaccessible mount, validate it
+before assignment, enforce request budgets, and journal every request/result. A missing card
+currently means `not_documented`; construction audit must check that this is not merely an omitted
+reported result.
 
 ## Construction and admission
 

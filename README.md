@@ -42,7 +42,8 @@ The [interactive case-report track](docs/INTERACTIVE_CASE_TRACK.md) is an adopte
 separate question-and-test benchmark inspired by Microsoft's SDBench. An agent would start with a
 short, audited presentation, request documented findings through a host broker, and submit a
 terminal prediction. Missing tests would receive an explicit unavailable response, not a generated
-patient result. This track has no case packs, runner or model scores yet; it will be reported
+patient result. Its offline pack validator and request resolver have synthetic software tests,
+but it has no accepted case packs, isolated runner or model scores yet; it will be reported
 separately from the five next-event families.
 
 ## Run locally

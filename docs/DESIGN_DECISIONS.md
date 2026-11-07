@@ -563,7 +563,7 @@ remain untouched.
 
 ---
 
-## D-24 — Add an observed-only interactive case-report track. **Adopted as separate pilot design, 2026-11-07; implementation pending**
+## D-24 — Add an observed-only interactive case-report track. **Adopted as separate pilot design, 2026-11-07; pack contract implemented, runner pending**
 
 Santosh proposed adding the published-case, question-and-test interaction used by Microsoft's
 SDBench as a separate benchmark task. The public [SDBench documentation](https://microsoft.github.io/sdbench/)
@@ -586,7 +586,9 @@ and specialty outcomes separately from the five-family fixed-prefix score. No co
 score is authorized.
 
 The [interactive track contract](INTERACTIVE_CASE_TRACK.md) specifies construction, case admission,
-information statuses, negative controls and reporting. This decision adopts the task, not a claim
-that current article files or timelines are ready to serve as interactive cases. No case packs,
-interactive runner, clinical validation or model scores were produced with this decision. D-18
+information statuses, negative controls and reporting. The offline pack validator and request
+resolver implement the observed-only response contract with synthetic tests, but cannot isolate a
+solver that can access their `CasePack`. This decision adopts the task, not a claim that current
+article files or timelines are ready to serve as interactive cases. No accepted case packs,
+isolated runner, clinical validation or model scores were produced with this decision. D-18
 through D-23 remain in force for the existing benchmark.

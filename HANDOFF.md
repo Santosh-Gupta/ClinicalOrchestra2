@@ -6,7 +6,10 @@ question-and-test task using published case narratives. **D-24** and
 construct quoted, chronology-checked evidence cards; present a short audited summary and common
 request menu; return documented findings or explicit unavailable statuses; score exact terminal
 choices separately from fixed-prefix next events. Do not send a raw full article to a live
-gatekeeper or synthesize missing results as patient facts. No interactive case pack, broker, runner,
+gatekeeper or synthesize missing results as patient facts. An offline pack validator and host-side
+request resolver in [`src/clinical_orchestra/interactive.py`](src/clinical_orchestra/interactive.py)
+implement explicit documented/unavailable responses and pass synthetic negative-control tests;
+they are not a solver isolation boundary. No accepted interactive case pack, isolated runner,
 model result or clinical validity estimate exists yet. The current five historical timelines and
 unreviewed specialty candidates are not ready-made interactive cases. Implement the shared D-21
 measurement/isolation core first, then build and audit small development packs before any solver
