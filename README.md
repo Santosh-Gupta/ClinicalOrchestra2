@@ -46,6 +46,14 @@ patient result. Its offline pack validator and request resolver have synthetic s
 but it has no accepted case packs, isolated runner or model scores yet; it will be reported
 separately from the five next-event families.
 
+## What the harness research is for
+
+The [harness learning agenda](docs/HARNESS_LEARNING_AGENDA.md) treats retrieval timing, an initial
+forecast before tool use, and agent count/capability as controlled experiments. We will retain
+simple and equal-budget controls, report improvements and regressions by task family, and measure
+cost and completion alongside accuracy. The goal is to learn which mechanism helps which cases,
+not merely search for one high score. No such model comparison has been run yet.
+
 ## Run locally
 
 Use Python 3.11 from the repository root. These commands need no keys or network:
@@ -72,8 +80,9 @@ access has not. Missing keys do not prevent setup or synthetic testing.
 | Path | Purpose |
 | --- | --- |
 | [HANDOFF.md](HANDOFF.md) | Current state, setup, limitations and next work |
-| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Authoritative decisions, through D-24 |
+| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Authoritative decisions, through D-25 |
 | [docs/INTERACTIVE_CASE_TRACK.md](docs/INTERACTIVE_CASE_TRACK.md) | Separate observed-only interactive task contract |
+| [docs/HARNESS_LEARNING_AGENDA.md](docs/HARNESS_LEARNING_AGENDA.md) | Controlled harness experiment plan |
 | [docs/CONSTRUCTION_PIPELINE.md](docs/CONSTRUCTION_PIPELINE.md) | Current prompts, API workflow and commands |
 | [docs/NEXT_STEP_ARCHITECTURE.md](docs/NEXT_STEP_ARCHITECTURE.md) | Planned next-step evaluation and harness design |
 | [docs/PREDICTION_TARGET_CATALOG_2026-10-10.md](docs/PREDICTION_TARGET_CATALOG_2026-10-10.md) | Candidate things to forecast from case reports and eligibility tiers |

@@ -592,3 +592,30 @@ solver that can access their `CasePack`. This decision adopts the task, not a cl
 article files or timelines are ready to serve as interactive cases. No accepted case packs,
 isolated runner, clinical validation or model scores were produced with this decision. D-18
 through D-23 remain in force for the existing benchmark.
+
+---
+
+## D-25 — Treat harness construction as a learning program, not a score search. **Adopted as experiment design, 2026-11-07; runs pending**
+
+Santosh's objective is to learn when information retrieval helps, whether a model should make an
+initial pass before receiving evidence, and how agent count and capability change outcomes. The
+[harness learning agenda](HARNESS_LEARNING_AGENDA.md) specifies staged, matched contrasts for
+evidence value, timing, selective triggering, provisional forecasts, independent agents and mixed
+capability teams. It extends D-21's controlled-comparison rules, not the clinical task or scoring
+contract. Optimize understanding of mechanisms and tradeoffs; a highest-score configuration is a
+possible result, not the sole objective.
+
+First compare direct and repeated-request forecasts with a fixed evidence packet and an extra-call
+no-evidence control. To identify timing, deliver the **same packet** at different observable stages
+under matched budgets. A saved provisional probability vector plus a short uncertainty note is the
+operational meaning of "finish an initial pass"; private model reasoning completion is not
+observable. Study adaptive retrieval separately, because it changes which evidence arrives. Compare
+multi-agent systems against a single-agent repeated-sample control under declared total budgets and
+record each model's actual identity and role. Report per-family and per-specialty effects,
+initial-to-final corrections and regressions, calibration, completion, cost and latency, with case
+clustering. Separate exploratory selection from untouched-case confirmation and disclose variants
+tried. The observed-only interactive track has its own information and outcome semantics and is
+reported separately.
+
+The common D-21 measurement and isolation core remains the first implementation gate. No model
+run, benchmark score or clinical validity result accompanies this decision.

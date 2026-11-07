@@ -1,5 +1,15 @@
 # Handoff — Clinical Orchestra 2
 
+**Learning-first harness agenda, 2026-11-07:** Santosh wants the project to explain harness
+behavior, not only maximize one score. Read **D-25** and
+[the staged experiment plan](docs/HARNESS_LEARNING_AGENDA.md) before comparing policies. Its first
+questions are evidence value, retrieval timing with the *same* evidence, selective triggering,
+an observable provisional forecast before retrieval, and agent count/capability under matched
+budgets. Preserve direct and repeated-request controls, initial and final vectors, all assigned
+failures, cost/latency and case-clustered uncertainty. The interactive D-24 track is analyzed
+separately. No experiments were run for this design update; D-21's measurement and isolation core
+is still the first coding gate.
+
 **Interactive case-report track, 2026-11-07:** Santosh requested a separate SDBench-inspired
 question-and-test task using published case narratives. **D-24** and
 [the interactive track contract](docs/INTERACTIVE_CASE_TRACK.md) adopt an observed-only pilot:
