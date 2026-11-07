@@ -1,5 +1,18 @@
 # Handoff — Clinical Orchestra 2
 
+**SDBench release review, 2026-11-07:** Microsoft published its sequential-diagnosis study in
+*Science* and released the MIT-licensed SDBench evaluation code. Read the
+[pinned source review](docs/SDBENCH_RELEASE_REVIEW_2026-11-07.md) before borrowing anything from
+it; the [watchlist](docs/PROJECT_WATCHLIST.md) now includes it. SDBench's interactive gatekeeper
+may synthesize absent findings and its diagnosis is scored by a model judge. The code contains a
+baseline agent, not the full MAI-DxO orchestrator; NEJM and MIMIC clinical datasets require
+separate access. Its named configs, agent/gatekeeper/judge separation, per-case logs and recovery
+are useful engineering references. Its synthetic findings and judge do not replace our
+source-grounded next-event labels or deterministic scorer. The MIMIC release reports 13 corrected
+diagnosis labels among 71 clinician-reviewed test cases, a reminder not to claim clinical
+validation from LLM-only checks. This was read-only research and documentation: no code, cases,
+prompts, model calls or benchmark results changed. D-18 through D-23 remain in force.
+
 **Three specialty tracks, 2026-10-16:** Santosh requested separate pure psychiatry, pure neurology
 and integrated neuropsychiatric next-step benchmarks, with many mixed candidates. Read
 [the track contract](docs/PSYCHIATRY_NEUROLOGY_BENCHMARKS.md) and **D-23** before sourcing or
