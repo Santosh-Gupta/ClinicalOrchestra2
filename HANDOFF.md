@@ -1,5 +1,17 @@
 # Handoff — Clinical Orchestra 2
 
+**Interactive case-report track, 2026-11-07:** Santosh requested a separate SDBench-inspired
+question-and-test task using published case narratives. **D-24** and
+[the interactive track contract](docs/INTERACTIVE_CASE_TRACK.md) adopt an observed-only pilot:
+construct quoted, chronology-checked evidence cards; present a short audited summary and common
+request menu; return documented findings or explicit unavailable statuses; score exact terminal
+choices separately from fixed-prefix next events. Do not send a raw full article to a live
+gatekeeper or synthesize missing results as patient facts. No interactive case pack, broker, runner,
+model result or clinical validity estimate exists yet. The current five historical timelines and
+unreviewed specialty candidates are not ready-made interactive cases. Implement the shared D-21
+measurement/isolation core first, then build and audit small development packs before any solver
+comparison. The existing three specialty cohorts and five-family benchmark remain separate.
+
 **SDBench release review, 2026-11-07:** Microsoft published its sequential-diagnosis study in
 *Science* and released the MIT-licensed SDBench evaluation code. Read the
 [pinned source review](docs/SDBENCH_RELEASE_REVIEW_2026-11-07.md) before borrowing anything from

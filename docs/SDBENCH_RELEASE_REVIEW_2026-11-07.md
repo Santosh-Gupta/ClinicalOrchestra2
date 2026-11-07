@@ -25,6 +25,11 @@ and [agent directory](https://github.com/microsoft/sdbench/tree/304ce9625a046cea
 
 The clinically sourced data are separate from the MIT code. NEJM cases require licensing from
 NEJM; MIMIC-IV-Ext-SDBench requires PhysioNet credentialing, training and a data-use agreement.
+The public [case schema](https://github.com/microsoft/sdbench/blob/304ce9625a046cea97d64e3b1ba5d19217b5095c/sdbench/case_data.py)
+stores a brief summary, full case text and final diagnosis. For the NEJM cohort, the described
+source is the published Case Records narrative; the public dataset description does not identify
+an additional unpublished patient chart. The gatekeeper's added function is selective disclosure
+and, when a test is absent, possible synthesis—not access to a more complete patient record.
 The five bundled synthetic cases are development fixtures only. The MIMIC release has 488 distinct
 patients: 163 train, 254 validation and 71 clinician-reviewed test cases. Its developers used
 LLMs in curation and then corrected 13 ground-truth diagnoses during clinician review of the
@@ -59,6 +64,11 @@ information cutoff, and their gold labels must quote the documented course. An i
 gatekeeper can answer a test that the clinicians never ordered, which changes both the task and
 the evidence. This distinction is strongest for the mixed psychiatry/neurology track, where a
 plausible but invented finding could falsely settle the specialty crossover.
+
+Santosh subsequently adopted a separate **observed-only interactive pilot** in
+[D-24](DESIGN_DECISIONS.md) and [its task contract](INTERACTIVE_CASE_TRACK.md). It uses curated
+evidence cards and explicit unavailable responses; it does not change the fixed-prefix scorer or
+turn SDBench's synthetic continuations into observed labels.
 
 ## Limited follow-up
 

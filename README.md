@@ -36,6 +36,15 @@ probabilities over frozen candidate IDs, including an `OTHER` option. Outputs re
 answer and supporting evidence. Report eventual forecast scores by event type and cluster statistics
 by case. The probability scorer and evaluation runner remain to be built.
 
+## Separate interactive pilot
+
+The [interactive case-report track](docs/INTERACTIVE_CASE_TRACK.md) is an adopted design for a
+separate question-and-test benchmark inspired by Microsoft's SDBench. An agent would start with a
+short, audited presentation, request documented findings through a host broker, and submit a
+terminal prediction. Missing tests would receive an explicit unavailable response, not a generated
+patient result. This track has no case packs, runner or model scores yet; it will be reported
+separately from the five next-event families.
+
 ## Run locally
 
 Use Python 3.11 from the repository root. These commands need no keys or network:
@@ -62,7 +71,8 @@ access has not. Missing keys do not prevent setup or synthetic testing.
 | Path | Purpose |
 | --- | --- |
 | [HANDOFF.md](HANDOFF.md) | Current state, setup, limitations and next work |
-| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Authoritative decisions, through D-21 |
+| [docs/DESIGN_DECISIONS.md](docs/DESIGN_DECISIONS.md) | Authoritative decisions, through D-24 |
+| [docs/INTERACTIVE_CASE_TRACK.md](docs/INTERACTIVE_CASE_TRACK.md) | Separate observed-only interactive task contract |
 | [docs/CONSTRUCTION_PIPELINE.md](docs/CONSTRUCTION_PIPELINE.md) | Current prompts, API workflow and commands |
 | [docs/NEXT_STEP_ARCHITECTURE.md](docs/NEXT_STEP_ARCHITECTURE.md) | Planned next-step evaluation and harness design |
 | [docs/PREDICTION_TARGET_CATALOG_2026-10-10.md](docs/PREDICTION_TARGET_CATALOG_2026-10-10.md) | Candidate things to forecast from case reports and eligibility tiers |

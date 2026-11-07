@@ -560,3 +560,33 @@ A strict two-family specialty-review prompt and runner are implemented for prepa
 cases, but no live review, independent chronology audit, accepted case assignment, real input/output
 pair, solver run or difficulty result accompanies this decision. The prior 99 post-cutoff items
 remain untouched.
+
+---
+
+## D-24 — Add an observed-only interactive case-report track. **Adopted as separate pilot design, 2026-11-07; implementation pending**
+
+Santosh proposed adding the published-case, question-and-test interaction used by Microsoft's
+SDBench as a separate benchmark task. The public [SDBench documentation](https://microsoft.github.io/sdbench/)
+and [case schema](https://github.com/microsoft/sdbench/blob/304ce9625a046cea97d64e3b1ba5d19217b5095c/sdbench/case_data.py)
+support the key distinction: the diagnostic agent starts with a brief summary, while the gatekeeper
+uses the full published NEJM case narrative. No additional unpublished NEJM patient chart is
+identified in those public descriptions. SDBench can synthesize an unreported test result; doing
+so changes the evidentiary meaning of an answer.
+
+Add a separate interactive pilot over eligible published reports, alongside the fixed-prefix
+next-event tasks and the three exclusive D-23 specialty cohorts. Build curated, quoted evidence
+cards from D-17's physical and information chronologies before a solver run. A host broker reveals
+only documented findings valid at the chosen anchor; absent tests return `not_documented`, and
+later or state-dependent findings return `not_available_at_cutoff`. It must never silently turn
+either into a plausible result. The full article, hidden cards and endpoint stay outside the solver
+environment. Begin with a common request menu and exact-ID terminal options so request routing
+and scoring are deterministic; free-text routing and simulated results require separate, measured
+protocols. Use a matched no-request baseline and report retrieval/availability, cost, completion
+and specialty outcomes separately from the five-family fixed-prefix score. No combined headline
+score is authorized.
+
+The [interactive track contract](INTERACTIVE_CASE_TRACK.md) specifies construction, case admission,
+information statuses, negative controls and reporting. This decision adopts the task, not a claim
+that current article files or timelines are ready to serve as interactive cases. No case packs,
+interactive runner, clinical validation or model scores were produced with this decision. D-18
+through D-23 remain in force for the existing benchmark.
